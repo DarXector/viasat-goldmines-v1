@@ -1,28 +1,54 @@
 {
   "compilerOptions": {
-    "allowJs": true,
-    "alwaysStrict": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ESNext"
+    ],
+    "allowJs": false,
+    "skipLibCheck": true,
+    "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
     "module": "ESNext",
     "moduleResolution": "Node",
-    "noEmit": true,
-    "noFallthroughCasesInSwitch": false,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
     "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "target": "ESNext",
+    "isolatedModules": true,
+    "noEmit": true,
+    "types": [
+      "node",
+      "jest",
+    ],
+    "jsx": "react-jsx",
+    "baseUrl": "src",
     "paths": {
-      "@/*": ["./*"]
-    },
-    "incremental": true
+      "@/components/*": [
+        "components/*"
+      ],
+      "@/pages/*": [
+        "pages/*"
+      ],
+      "@/lib/*": [
+        "lib/*"
+      ],
+      "@/types/*": [
+        "types/*"
+      ],
+      "@/hooks/*": [
+        "hooks/*"
+      ],
+      "@/store/*": [
+        "store/*"
+      ],
+      "@/services/*": [
+        "services/*"
+      ]
+    }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  "include": [
+    "./src"
+  ]
 }
