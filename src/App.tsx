@@ -1,22 +1,40 @@
-import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import Header from './components/Header';
-import Router from './routes';
+import React from 'react';
+import logo from './logo.svg';
 import './App.css';
 
+import {
+  Routes,
+  Route,
+  Link,
+  useNavigate,
+  useLocation,
+  Navigate,
+  Outlet,
+} from "react-router-dom";
+import {Layout} from "./routes/Layout";
+import {PublicPage} from "./routes/PublicPage";
+import {LoginPage} from "./routes/LoginPage";
+import {RequireAuth} from "./routes/RequireAuth";
+import {ProtectedPage} from "./routes/ProtectedPage";
+
 function App() {
-  const queryClient = new QueryClient();
   return (
-    <QueryClientProvider client={queryClient}>
-      <div className="App font-mono h-screen">
-        <Header />
-        <Router />
-      </div>
-      {/*
-          <ToastContainer />
-    */}
-    </QueryClientProvider>
+    <div className="App">
+      <Routes>
+        <Route element={<Layout />}>
+          <Route path="/" element={<PublicPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route
+              path="/protected"
+              element={
+                <RequireAuth>
+                  <ProtectedPage />
+                </RequireAuth>
+              }
+          />
+        </Route>
+      </Routes>
+    </div>
   );
 }
 
