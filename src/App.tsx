@@ -24,8 +24,11 @@ function App() {
         <Route element={<Layout />}>
           <Route path="/" element={<PublicPage />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/about" element={<PublicPage />} />
+          <Route path="/howto" element={<PublicPage />} />
+          <Route path="/ranking" element={<PublicPage />} />
           <Route
-              path="/protected"
+              path="/quiz"
               element={
                 <RequireAuth>
                   <ProtectedPage />

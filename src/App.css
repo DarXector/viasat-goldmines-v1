@@ -1,40 +1,88 @@
 .App {
-  text-align: center;
-  width: 100%;
-  max-width: 1024px;
+    text-align: center;
+    width: 100%;
+    max-width: 1024px;
+    height: 100vh;
 }
 
 .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+    height: 40vmin;
+    pointer-events: none;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    height: inherit;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+    .App-logo {
+        animation: App-logo-spin infinite 20s linear;
+    }
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
 }
 
 .App-link {
-  color: #61dafb;
+    color: #61dafb;
 }
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.navbar {
+    border-bottom: solid 1px #EBEBEB;
+}
+
+.bottom-tab-nav {
+    border-top: solid 1px #EBEBEB;
+}
+
+.bottom-nav-link .row>* {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.nav-link, .bottom-nav-link {
+    color: #808080;
+    font-size: 20px;
+}
+
+.bottom-nav-link svg{
+    margin-bottom: 10px;
+}
+
+.bottom-nav-link.active{
+    border-bottom: #A41A16 solid 10px;
+}
+
+.bottom-nav-link.active .bottom-tab-label{
+    color: #303030;
+}
+
+.bottom-nav-link.active svg{
+    color: #A41A16;
+}
+
+.bottom-tab-label {
+    font-weight: 700;
+    font-size: 16px;
 }
