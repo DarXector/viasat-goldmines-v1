@@ -1,0 +1,8 @@
+.transparent-button{
+    border: none;
+    background-color: rgba(255, 255, 255, 0);
+    color: #FFFFFF;
+    padding: 15px;
+    font-weight: 700;
+    min-width: 240px;
+}

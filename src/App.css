@@ -1,7 +1,11 @@
+:root {
+    --swiper-pagination-bottom: 20px
+}
+
 .App {
     text-align: center;
     width: 100%;
-    max-width: 1024px;
+    max-width: 720px;
     height: 100vh;
 }
 
@@ -86,3 +90,75 @@
     font-weight: 700;
     font-size: 16px;
 }
+
+
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #A51B17;
+
+    /* Center slide text vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: linear-gradient(#A51B17 0%, #261301 100%);
+
+    overflow: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+
+.swiper-slide::-webkit-scrollbar {
+    display: none;
+}
+
+.my-swiper .swiper-pagination-bullet {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.my-swiper .swiper-pagination-bullet-active {
+    background: rgba(255, 255, 255, 1);
+}
+
+.slide-content {
+    color: white;
+    background-image: url("assets/images/map.png");
+    background-position: center center;
+    background-size: cover;
+    border-radius: 16px;
+    background-repeat: no-repeat;
+    margin: 50px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    max-height: 720px;
+}
+
+.slide-content .viasat-logo {
+    height: 10vh;
+    margin: 30px;
+}
+
+.slide-content .app-title {
+    width: 100%;
+}
+
+.slide-content p{
+    max-width: 80%;
+    font-size: 18px;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 1);
+}
+
+.slide-content .cast-image {
+    width: 65%;
+}
+

@@ -12,7 +12,7 @@ import {
   Outlet,
 } from "react-router-dom";
 import {Layout} from "./routes/Layout";
-import {PublicPage} from "./routes/PublicPage";
+import {StartPage} from "./routes/StartPage";
 import {LoginPage} from "./routes/LoginPage";
 import {RequireAuth} from "./routes/RequireAuth";
 import {ProtectedPage} from "./routes/ProtectedPage";
@@ -22,11 +22,11 @@ function App() {
     <div className="App">
       <Routes>
         <Route element={<Layout />}>
-          <Route path="/" element={<PublicPage />} />
+          <Route path="/" element={<StartPage />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/about" element={<PublicPage />} />
-          <Route path="/howto" element={<PublicPage />} />
-          <Route path="/ranking" element={<PublicPage />} />
+          <Route path="/about" element={<StartPage />} />
+          <Route path="/howto" element={<StartPage />} />
+          <Route path="/ranking" element={<StartPage />} />
           <Route
               path="/quiz"
               element={
