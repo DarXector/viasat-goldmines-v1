@@ -16,6 +16,8 @@ import {StartPage} from "./routes/StartPage";
 import {LoginPage} from "./routes/LoginPage";
 import {RequireAuth} from "./routes/RequireAuth";
 import {ProtectedPage} from "./routes/ProtectedPage";
+import {AboutPage} from "./routes/AboutPage";
+import {HowToPage} from "./routes/HowToPage";
 
 function App() {
   return (
@@ -24,8 +26,8 @@ function App() {
         <Route element={<Layout />}>
           <Route path="/" element={<StartPage />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/about" element={<StartPage />} />
-          <Route path="/howto" element={<StartPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/howto" element={<HowToPage />} />
           <Route path="/ranking" element={<StartPage />} />
           <Route
               path="/quiz"

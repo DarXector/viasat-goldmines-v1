@@ -1,8 +1,24 @@
-.transparent-button{
+.transparent-button {
     border: none;
     background-color: rgba(255, 255, 255, 0);
     color: #FFFFFF;
     padding: 15px;
     font-weight: 700;
-    min-width: 240px;
+}
+
+.transparent-button:active, .transparent-button.inverted:active {
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.transparent-button:hover {
+    background-color: rgba(255, 255, 255, 0);
+    color: #A41A16;
+}
+
+.transparent-button.inverted {
+    color: #A41A16;
+}
+
+.transparent-button.inverted:hover {
+    color: #ffffff;
 }

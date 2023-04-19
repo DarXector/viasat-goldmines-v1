@@ -1,0 +1,15 @@
+.howto-page {
+    background-image: url("../assets/images/aussie-gold-hunters.png");
+}
+
+.howto-page .app-title {
+    width: 80%;
+    margin-top: 260px;
+}
+
+.howto-page .subtitle{
+    color: #FFFFFF;
+    max-width: 80%;
+    font-size: 22px;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 1);
+}

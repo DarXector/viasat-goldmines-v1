@@ -10,32 +10,36 @@ import {Slide} from "../components/Slide";
 import viasatLogoImg from '../assets/images/viasat-explore-logo.png';
 import appTitleImg from '../assets/images/title-ENG.png';
 import castImg from '../assets/images/cast.png';
-import {Button} from "reactstrap";
-import {WhiteButton} from "../components/WhiteButton";
+import {AppButton} from "../components/AppButton";
 import {TransparentButton} from "../components/TransparentButton";
+import {Link} from "react-router-dom";
 
 export function StartPage() {
     return (
         <Swiper pagination={true} modules={[Pagination, Scrollbar]} className="my-swiper">
             <SwiperSlide>
                 <Slide>
-                    <img className='viasat-logo' src={viasatLogoImg}/>
+                    <img className='viasat-logo' alt="Viasat History Logo" src={viasatLogoImg}/>
                     <p>Welcome to</p>
-                    <img className='app-title' src={appTitleImg}/>
+                    <img className='app-title' alt="Auissie Gold Hunters MINE SOS" src={appTitleImg}/>
                     <p style={{marginTop: '-20px'}}>Q U I Z Z</p>
-                    <img className='cast-image' src={castImg}/>
+                    <img alt="Cast" className='cast-image' src={castImg}/>
                 </Slide>
             </SwiperSlide>
             <SwiperSlide>
                 <Slide>
-                    <img className='viasat-logo' src={viasatLogoImg}/>
+                    <img className='viasat-logo' alt="Viasat History Logo" src={viasatLogoImg}/>
                     <p>Welcome to our quizz inspired by Auusie Gold Hunters Mine SOS Show on Viasat Explore channel.</p>
                     <br />
                     <p>Lorem ipsum veteran gold hunter Paul Mackie, geologist Aaron Raddock, and logistics expert Melanie Wood travel to Australia’s toughest frontiers to help restore six struggling gold mining operations to success.</p>
                     <br />
-                    <WhiteButton>TAKE A QUIZ</WhiteButton>
+                    <Link to='/quiz'>
+                        <AppButton>TAKE A QUIZ</AppButton>
+                    </Link>
                     <br />
-                    <TransparentButton>ABOUT</TransparentButton>
+                    <Link to='/about'>
+                        <TransparentButton>ABOUT</TransparentButton>
+                    </Link>
                     <br />
                 </Slide>
             </SwiperSlide>

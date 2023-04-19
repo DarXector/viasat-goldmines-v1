@@ -1,0 +1,23 @@
+.app-button{
+    background-color: #FFF;
+    color: #A41A16;
+    padding: 15px;
+    font-weight: 700;
+    min-width: 240px;
+    border: none;
+}
+
+.app-button:hover{
+    background-color: #A41A16;
+    color: #FFF;
+}
+
+.app-button.inverted{
+    background-color: #A41A16;
+    color: #fff;
+}
+
+.app-button.inverted:hover{
+    background-color: #fff;
+    color: #A41A16;
+}

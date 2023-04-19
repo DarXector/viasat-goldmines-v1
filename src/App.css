@@ -67,11 +67,15 @@
 
 .nav-link, .bottom-nav-link {
     color: #808080;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .bottom-nav-link svg{
     margin-bottom: 10px;
+}
+
+.bottom-nav-link:hover{
+    color: #A41A16;
 }
 
 .bottom-nav-link.active{
@@ -82,24 +86,28 @@
     color: #303030;
 }
 
+.bottom-nav-link:hover svg{
+    color: #A41A16;
+}
+
 .bottom-nav-link.active svg{
     color: #A41A16;
 }
 
 .bottom-tab-label {
     font-weight: 700;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 
 .swiper {
     width: 100%;
-    height: 100%;
+    height: 100vh;
 }
 
 .swiper-slide {
     text-align: center;
-    font-size: 18px;
+    font-size: 16px;
     background: #A51B17;
 
     /* Center slide text vertically */
@@ -140,7 +148,7 @@
     flex-direction: column;
     align-items: center;
 
-    max-height: 720px;
+    max-height: 800px;
 }
 
 .slide-content .viasat-logo {
@@ -160,5 +168,70 @@
 
 .slide-content .cast-image {
     width: 65%;
+}
+
+.inner-page {
+    background-image: linear-gradient(#000000 50%, #A51B17 100%);
+    background-position: top center;
+    height: 100vh;
+    overflow: auto;
+
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.inner-page::-webkit-scrollbar {
+    display: none;
+}
+
+.page-title {
+    position: fixed;
+    width: 100%;
+    max-width: 720px;
+    z-index: 2;
+    background: linear-gradient(#000000 0%, rgba(0, 0, 0, 0) 100%);
+    height: 80px;
+    padding: 10px 50px;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.page-title h3 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.page-title .viasat-logo {
+    height: 60px;
+}
+
+.page {
+    background-position: top center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-container {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 16px;
+    padding: 30px 10px;
+    width: 85%;
+    margin-bottom: 50px;
+}
+
+.page-container p {
+    font-size: 18px;
+    width: 80%;
+    color: black;
+    text-shadow: none;
+    text-align: center;
+    margin: 0 0 30px 0;
 }
 

@@ -1,0 +1,25 @@
+.episode-info {
+    border-radius: 12px;
+    background: #FFFFFF;
+    padding: 6px;
+    color: black;
+    width: 90%;
+    margin-bottom: 10px;
+}
+
+.episode-info .episode-info-title{
+    background: #BABABA;
+    border-radius: 12px;
+    padding: 12px;
+}
+
+.episode-info .episode-info-day{
+    margin: 5px;
+}
+
+.episode-info .episode-info-time{
+    color: #FFFFFF;
+    background: #A41A16;
+    border-radius: 12px;
+    padding: 12px 20px;
+}
