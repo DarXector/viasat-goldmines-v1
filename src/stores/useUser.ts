@@ -4,6 +4,7 @@ import {persist} from "zustand/middleware";
 type UserStore = {
     currentUser: string | null | undefined | unknown;
     getSessionToken: () => string;
+    pending: boolean;
     login: (username: string) => void;
 }
 
@@ -24,9 +25,11 @@ export const useUser = create(
         (set, get) => ({
             currentUser: undefined,
             getSessionToken: () => getIdToken(),
+            pending: false,
             login: async (username) => {
+                set({pending: true});
                 const user = await signInWithEmailAndPassword(username);
-                set({ currentUser: user })
+                set({ currentUser: user, pending: false })
             }
         }),
         {

@@ -10,7 +10,7 @@ import {TransparentButton} from "../components/TransparentButton";
 
 export function HowToPage() {
     return (
-        <InnerPage title={'How To Play'}>
+        <InnerPage title={'How To Play'} scrollable={true}>
             <div className='page howto-page'>
                 <img className='app-title' alt="Auissie Gold Hunters MINE SOS" src={appTitleImg}/>
                 <p style={{marginTop: '-20px'}}>Q U I Z Z</p>

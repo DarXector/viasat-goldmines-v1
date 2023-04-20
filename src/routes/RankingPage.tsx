@@ -1,7 +1,6 @@
-import {useRanking, UserRanking} from "../stores/rankingStore";
-import {useEffect, useRef} from "react";
+import {useRanking} from "../stores/rankingStore";
+import {useEffect} from "react";
 import {InnerPage} from "./InnerPage";
-import {ViewportList} from "react-viewport-list";
 import {Spinner} from "reactstrap";
 
 import './RankingPage.css';
@@ -14,24 +13,19 @@ export function RankingPage() {
 
     useEffect(() => {
         getRanking();
-    }, []);
-
-    const ref = useRef<HTMLDivElement | null>(
-        null,
-    );
+    }, [ranking, getRanking]);
 
     return (
         <InnerPage title={'Ranking'}>
             <div className='page ranking-page'>
                 {loading ? <Spinner color='light' /> :
-                <ViewportList
-                    viewportRef={ref}
-                    items={ranking}
-                >
-                    {(item: UserRanking) => (
-                        <RankItem user={item} />
-                    )}
-                </ViewportList>}
+                <div className='list scrollable'>
+                    { ranking.map(item => <RankItem user={item} />) }
+                </div>}
+
+                {userRanking ? <div className='fixed-rank d-flex flex-column align-items-center'>
+                    <RankItem user={userRanking} isCurrentUser={true} />
+                </div> : ''}
             </div>
         </InnerPage>
     );

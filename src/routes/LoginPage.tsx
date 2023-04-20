@@ -1,10 +1,16 @@
 import {useUser} from "../stores/useUser";
 import {useLocation, useNavigate} from "react-router-dom";
+import viasatLogoImg from "../assets/images/viasat-explore-logo.png";
+
+import './LoginPage.css';
+import {AppButton} from "../components/AppButton";
+import {Spinner} from "reactstrap";
 
 export function LoginPage() {
     let navigate = useNavigate();
     let location = useLocation();
     const {login} = useUser();
+    const pending = useUser(state => state.pending)
 
     let from = location.state?.from?.pathname || "/";
 
@@ -23,15 +29,16 @@ export function LoginPage() {
     }
 
     return (
-        <div>
-            <p>You must log in to view the page at {from}</p>
-
-            <form onSubmit={handleSubmit}>
-                <label>
-                    Username: <input name="username" type="text" />
-                </label>{" "}
-                <button type="submit">Login</button>
+        <div className='login-page page'>
+            <img className='viasat-logo' alt="Viasat History Logo" src={viasatLogoImg}/>
+            <p>
+                Enter your nickname below and press start when you are ready.
+            </p>
+            <form className='d-flex flex-column align-items-stretch w-75' style={{marginBottom: '20px'}} onSubmit={handleSubmit}>
+                <input className='login-input' name="username" type="text" placeholder="USERNAME" />
+                <AppButton type="submit" inverted={true}>START</AppButton>
             </form>
+            {pending? <Spinner color='light' /> : ''}
         </div>
     );
 }

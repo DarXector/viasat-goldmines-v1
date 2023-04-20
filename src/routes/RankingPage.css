@@ -1,3 +1,11 @@
 .ranking-page {
+    position: relative;
     height: 100vh;
+    justify-content: center;
+}
+
+.ranking-page .fixed-rank {
+    position: absolute;
+    bottom: 110px;
+    width: 100%;
 }

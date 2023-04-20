@@ -6,6 +6,11 @@
     width: 90%;
     padding: 10px 10px;
     font-size: 16pt;
+    margin-bottom: 10px;
+}
+
+.rank-item.current-user {
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
 }
 
 .rank-item .user-info {
@@ -48,3 +53,4 @@
     width: 36px;
     height: 36px;
 }
+

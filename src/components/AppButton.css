@@ -5,6 +5,7 @@
     font-weight: 700;
     min-width: 240px;
     border: none;
+    border-radius: 10px;
 }
 
 .app-button:hover{

@@ -1,12 +1,16 @@
 import {create} from "zustand";
-import {persist} from "zustand/middleware";
 
-const ranking = [
+const rankingStatic = [
     {rank: 1, username: "user1", totalTime: "1:00", correctAnswers: 10},
     {rank: 2, username: "user2", totalTime: "1:00", correctAnswers: 10},
     {rank: 3, username: "user3", totalTime: "1:00", correctAnswers: 10},
     {rank: 4, username: "user4", totalTime: "1:00", correctAnswers: 10},
     {rank: 5, username: "user5", totalTime: "1:00", correctAnswers: 10},
+    {rank: 6, username: "user6", totalTime: "1:00", correctAnswers: 10},
+    {rank: 7, username: "user7", totalTime: "1:00", correctAnswers: 10},
+    {rank: 8, username: "user8", totalTime: "1:00", correctAnswers: 10},
+    {rank: 9, username: "user9", totalTime: "1:00", correctAnswers: 10},
+    {rank: 10, username: "user10", totalTime: "1:00", correctAnswers: 10},
 ]
 
 export type UserRanking = {
@@ -27,7 +31,7 @@ function getRanking(): Promise<{ ranking: UserRanking[], userRanking: UserRankin
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             resolve({
-                ranking: ranking,
+                ranking: rankingStatic,
                 userRanking: {rank: 12, username: "user1", totalTime: "1:00", correctAnswers: 10}
             });
         }, 1000);
