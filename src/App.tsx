@@ -18,6 +18,7 @@ import {RequireAuth} from "./routes/RequireAuth";
 import {ProtectedPage} from "./routes/ProtectedPage";
 import {AboutPage} from "./routes/AboutPage";
 import {HowToPage} from "./routes/HowToPage";
+import {RankingPage} from "./routes/RankingPage";
 
 function App() {
   return (
@@ -28,7 +29,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/howto" element={<HowToPage />} />
-          <Route path="/ranking" element={<StartPage />} />
+          <Route path="/ranking" element={<RankingPage />} />
           <Route
               path="/quiz"
               element={

@@ -1,10 +1,10 @@
-import {userStore} from "../stores/userStore";
+import {useUser} from "../stores/useUser";
 import {useLocation, useNavigate} from "react-router-dom";
 
 export function LoginPage() {
     let navigate = useNavigate();
     let location = useLocation();
-    const {login} = userStore();
+    const {login} = useUser();
 
     let from = location.state?.from?.pathname || "/";
 
@@ -14,8 +14,8 @@ export function LoginPage() {
         let formData = new FormData(event.currentTarget);
         let username = formData.get("username") as string;
 
-        const unsub1 = userStore.subscribe(() => {
-            console.log("userStore.subscribe: ", userStore.getState());
+        const unsub1 = useUser.subscribe(() => {
+            console.log("userStore.subscribe: ", useUser.getState());
             navigate(from, { replace: true });
         })
         await login(username);

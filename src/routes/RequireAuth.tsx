@@ -1,8 +1,8 @@
-import {userStore} from "../stores/userStore";
+import {useUser} from "../stores/useUser";
 import {Navigate, useLocation} from "react-router-dom";
 
 export function RequireAuth({ children }: { children: JSX.Element }) {
-    let {currentUser} = userStore();
+    let {currentUser} = useUser();
     let location = useLocation();
 
     if (!currentUser) {

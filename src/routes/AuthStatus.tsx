@@ -1,7 +1,7 @@
-import {userStore} from "../stores/userStore";
+import {useUser} from "../stores/useUser";
 
 export function AuthStatus() {
-    const {currentUser} = userStore();
+    const {currentUser} = useUser();
 
     if (!currentUser) {
         return <p>You are not logged in.</p>;

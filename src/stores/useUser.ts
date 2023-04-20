@@ -19,7 +19,7 @@ function signInWithEmailAndPassword(username: string) {
     })
 }
 
-export const userStore = create(
+export const useUser = create(
     persist<UserStore>(
         (set, get) => ({
             currentUser: undefined,
