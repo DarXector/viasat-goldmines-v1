@@ -1,4 +1,4 @@
-import {useUser} from "../stores/useUser";
+import {useUser} from "../stores/userStore";
 
 export function AuthStatus() {
     const {currentUser} = useUser();

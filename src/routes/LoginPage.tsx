@@ -1,4 +1,4 @@
-import {useUser} from "../stores/useUser";
+import {useUser} from "../stores/userStore";
 import {useLocation, useNavigate} from "react-router-dom";
 import viasatLogoImg from "../assets/images/viasat-explore-logo.png";
 

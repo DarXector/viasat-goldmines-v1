@@ -15,7 +15,7 @@ import {Layout} from "./routes/Layout";
 import {StartPage} from "./routes/StartPage";
 import {LoginPage} from "./routes/LoginPage";
 import {RequireAuth} from "./routes/RequireAuth";
-import {ProtectedPage} from "./routes/ProtectedPage";
+import {QuestionPage} from "./routes/QuestionPage";
 import {AboutPage} from "./routes/AboutPage";
 import {HowToPage} from "./routes/HowToPage";
 import {RankingPage} from "./routes/RankingPage";
@@ -34,7 +34,7 @@ function App() {
               path="/quiz"
               element={
                 <RequireAuth>
-                  <ProtectedPage />
+                  <QuestionPage />
                 </RequireAuth>
               }
           />

@@ -1,4 +1,4 @@
-import {useUser} from "../stores/useUser";
+import {useUser} from "../stores/userStore";
 import {Navigate, useLocation} from "react-router-dom";
 
 export function RequireAuth({ children }: { children: JSX.Element }) {
