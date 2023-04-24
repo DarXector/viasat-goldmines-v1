@@ -1,9 +1,10 @@
 import {Button} from "reactstrap";
 
 import './AnswerButton.css';
-export function AnswerButton({order, children}: {order:number, children: any}) {
+import {MouseEventHandler} from "react";
+export function AnswerButton({order, children, onClick, isCorrectAnswer, isWrongAnswer}: {order:number, children: any, onClick:MouseEventHandler, isCorrectAnswer:boolean, isWrongAnswer:boolean}) {
     return (
-        <Button className={`answer-button w-100`}>
+        <Button onClick={onClick} className={`answer-button w-100 ${isCorrectAnswer ? 'correct' : ''} ${isWrongAnswer ? 'wrong' : ''}`}>
             {children}
         </Button>
     );

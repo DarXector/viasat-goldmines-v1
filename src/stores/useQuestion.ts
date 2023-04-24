@@ -1,8 +1,10 @@
 import {create} from "zustand";
 import {persist} from "zustand/middleware";
 import majdanpekMap from '../assets/maps/majdanpek_map.png';
+import leceMap from '../assets/maps/lece_map.png';
+import q3Bg from '../assets/maps/q3_bg.png';
 
-let currentQuestion = 0;
+let currentQuestionIndex = 0;
 
 const questions: Question[] = [
     {
@@ -21,10 +23,48 @@ const questions: Question[] = [
             },{
                 id: 'a3',
                 text: 'Kolubara',
+                correct: false,
+            }
+        ]
+    },{
+        id: 'q2',
+        text: 'What is the name of the mine shown on the map of Serbia?',
+        map: leceMap,
+        answers: [
+            {
+                id: 'a1',
+                text: 'Lece',
+                correct: true,
+            },{
+                id: 'a2',
+                text: 'Trepca',
+                correct: false,
+            },{
+                id: 'a3',
+                text: 'Majdanpek',
+                correct: false,
+            }
+        ]
+    },{
+        id: 'q3',
+        text: 'What is the symbol of gold in the periodic table?',
+        map: q3Bg,
+        answers: [
+            {
+                id: 'a1',
+                text: 'Cd',
+                correct: false,
+            },{
+                id: 'a2',
+                text: 'Ag',
+                correct: false,
+            },{
+                id: 'a3',
+                text: 'Au',
                 correct: true,
             }
         ]
-    }
+    },
 ]
 
 export type Answer = {
@@ -41,17 +81,22 @@ export type Question = {
 }
 
 type QuestionStore = {
-    getNextQuestion: () => void
+    getNextQuestion: (iterate?: number) => void
     currentQuestion: Question | unknown;
     loading: boolean;
+    isCorrect: boolean;
+    isLastQuestion: boolean;
+    answered: boolean;
+    correctAnswer: string;
+    wrongAnswer: string;
     answer: (id:string) => Promise<boolean>;
 }
 
 function getNextQuestion() {
     return new Promise((resolve, reject) => {
-        console.log(currentQuestion, 'currentQuestion');
+        console.log(currentQuestionIndex, 'currentQuestion');
         setTimeout(() => {
-            resolve(questions[currentQuestion]);
+            resolve(questions[currentQuestionIndex]);
         }, 1000);
     })
 }
@@ -59,7 +104,7 @@ function getNextQuestion() {
 function answerQuestion(id: string) {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
-            resolve(questions[currentQuestion]);
+            resolve(questions[currentQuestionIndex]);
         }, 1000);
     })
 }
@@ -67,21 +112,28 @@ function answerQuestion(id: string) {
 export const useQuestion = create<QuestionStore>(
     (set, get) => ({
         currentQuestion: null,
+        isCorrect: false,
+        correctAnswer: '',
+        wrongAnswer: '',
+        answered: false,
+        isLastQuestion: false,
         loading: false,
-        getNextQuestion: async () => {
+        getNextQuestion: async (iterate: number = 0) => {
             if (get().loading) return;
-            set({loading: true});
+            set({loading: true, answered: false, correctAnswer: '', wrongAnswer: ''});
+            currentQuestionIndex += iterate;
             const question = await getNextQuestion();
             console.log('question', question);
-            set({currentQuestion: question, loading: false});
+            set({currentQuestion: question, loading: false, isLastQuestion: currentQuestionIndex === questions.length - 1});
         },
         answer: (id:string) => {
             const question = get().currentQuestion as Question;
-            const answered = question.answers.find((answer => answer.id === id));
+            const correctAnswer = question.answers.find((answer => answer.correct)) as Answer;
+            const answeredCorrectly = correctAnswer.id === id;
             return new Promise((resolve, reject) => {
                 setTimeout(() => {
-                    if (answered) resolve(answered.correct);
-                    else reject('No answer with id: ' + id);
+                    set({isCorrect: answeredCorrectly, correctAnswer: correctAnswer.id, wrongAnswer: answeredCorrectly ? '' : id, answered: true});
+                    resolve(answeredCorrectly);
                 });
             })
         }

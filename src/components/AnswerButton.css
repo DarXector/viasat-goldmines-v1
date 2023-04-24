@@ -13,3 +13,13 @@
     background-color: #A41A16;
     color: #FFF;
 }
+
+.answer-button.correct {
+    color: #FFFFFF;
+    background: #58BE3F;
+}
+
+.answer-button.wrong {
+    color: #FFFFFF;
+    background: #A51B17 ;
+}
