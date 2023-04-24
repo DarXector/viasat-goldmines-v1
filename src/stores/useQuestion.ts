@@ -2,7 +2,7 @@ import {create} from "zustand";
 import {persist} from "zustand/middleware";
 import majdanpekMap from '../assets/maps/majdanpek_map.png';
 
-let currentQuestion = -1;
+let currentQuestion = 0;
 
 const questions: Question[] = [
     {
@@ -19,7 +19,7 @@ const questions: Question[] = [
                 text: 'Majdanpek',
                 correct: true,
             },{
-                id: 'a2',
+                id: 'a3',
                 text: 'Kolubara',
                 correct: true,
             }
@@ -49,7 +49,7 @@ type QuestionStore = {
 
 function getNextQuestion() {
     return new Promise((resolve, reject) => {
-        currentQuestion += 1;
+        console.log(currentQuestion, 'currentQuestion');
         setTimeout(() => {
             resolve(questions[currentQuestion]);
         }, 1000);
@@ -58,7 +58,6 @@ function getNextQuestion() {
 
 function answerQuestion(id: string) {
     return new Promise((resolve, reject) => {
-        currentQuestion += 1;
         setTimeout(() => {
             resolve(questions[currentQuestion]);
         }, 1000);
@@ -70,8 +69,10 @@ export const useQuestion = create<QuestionStore>(
         currentQuestion: null,
         loading: false,
         getNextQuestion: async () => {
+            if (get().loading) return;
             set({loading: true});
             const question = await getNextQuestion();
+            console.log('question', question);
             set({currentQuestion: question, loading: false});
         },
         answer: (id:string) => {

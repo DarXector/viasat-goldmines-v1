@@ -139,7 +139,7 @@
 .inner-page {
     background-image: linear-gradient(#000000 50%, #A51B17 100%);
     background-position: top center;
-    height: 100vh;
+    height: 100%;
     overflow: hidden;
 }
 

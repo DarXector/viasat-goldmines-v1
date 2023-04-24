@@ -1,11 +1,12 @@
 .answer-button{
     background-color: #FFF;
     color: #A41A16;
-    padding: 15px;
+    padding: 15px 20px;
     font-weight: 700;
     min-width: 240px;
     border: none;
     border-radius: 30px;
+    margin-bottom: 10px;
 }
 
 .answer-button:hover{

@@ -1,9 +1,9 @@
 import {Button} from "reactstrap";
 
-import './AppButton.css';
-export function AnswerButton({children}: {children: any}) {
+import './AnswerButton.css';
+export function AnswerButton({order, children}: {order:number, children: any}) {
     return (
-        <Button className={`answer-button`}>
+        <Button className={`answer-button w-100`}>
             {children}
         </Button>
     );

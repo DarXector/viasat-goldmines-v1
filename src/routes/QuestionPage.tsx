@@ -1,10 +1,9 @@
-import viasatLogoImg from "../assets/images/viasat-explore-logo.png";
 import {InnerPage} from "./InnerPage";
 import {Question, useQuestion} from "../stores/useQuestion";
-import {stat} from "fs";
 import {CSSProperties, useEffect} from "react";
 import {Spinner} from "reactstrap";
 import {AnswerButton} from "../components/AnswerButton";
+import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 
 import './QuestionPage.css';
 
@@ -17,15 +16,31 @@ export function QuestionPage() {
 
     useEffect(() => {
         getNextQuestion();
-    }, [currentQuestion])
+    }, []);
+
+    if (currentQuestion) {
+        console.log("currentQuestion.map: ", currentQuestion.map);
+    }
 
     return  <InnerPage title={`Question ${1}`}>
-        <div className='question-page page' style={currentQuestion ? {backgroundImage: currentQuestion.map} as CSSProperties : undefined}>
+        <div className='question-page page' style={currentQuestion ? {backgroundImage: `url(${currentQuestion.map})`} as CSSProperties : undefined}>
             {loading ? <Spinner color={'light'} /> :
-                <div className='d-flex flex-column justify-content-between align-items-center'>
+                <div className='d-flex flex-column justify-content-between align-items-center question-container'>
                     <div className='question'>{currentQuestion?.text}</div>
-                    <div className='d-flex flex-column align-items-center'>
-                        {currentQuestion?.answers.map((answer, index) => <AnswerButton>{answer.text}</AnswerButton>)}
+                    <div className='d-flex flex-column align-items-center w-100'>
+                        {currentQuestion?.answers.map((answer, index) => <AnswerButton key={answer.id} order={index}>{answer.text}</AnswerButton>)}
+                        <CountdownCircleTimer
+                            isPlaying
+                            size={100}
+                            duration={30}
+                            strokeWidth={6}
+                            colors={['#261301', '#A51B17', '#A51B17']}
+                            trailColor={'#fff'}
+                            colorsTime={[30, 10, 0]}
+                        >
+                            {({ remainingTime }) => <div className='d-flex justify-content-center align-items-center' style={{color: '#A51B17' ,fontSize: '20pt', fontWeight: 700, width: '88px', height: '88px', borderRadius: '99999px', backgroundColor: '#fff'}}>{remainingTime}</div>}
+                        </CountdownCircleTimer>
+                        <br />
                     </div>
                 </div>
             }
