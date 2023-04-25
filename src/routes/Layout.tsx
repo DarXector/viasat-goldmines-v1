@@ -4,26 +4,28 @@ import {Link, NavLink, Outlet} from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClipboardQuestion, faCompass, faTrophy, faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 import {Nav, NavItem} from "reactstrap";
+import {useTranslation} from "react-i18next";
 
 const tabs = [{
     route: "/about",
     icon: faCircleInfo,
-    label: "ABOUT"
+    label: "about"
 },{
     route: "/howto",
     icon: faCompass,
-    label: "HOW TO PLAY"
+    label: "how_to_play"
 },{
     route: "/quiz",
     icon: faClipboardQuestion,
-    label: "QUIZ"
+    label: "quiz"
 },{
     route: "/ranking",
     icon: faTrophy,
-    label: "RANKING"
+    label: "ranking"
 }]
 
 export function Layout() {
+    const {t, i18n} = useTranslation();
     return (
         <div className="content">
             <Outlet />
@@ -33,10 +35,10 @@ export function Layout() {
                         {
                             tabs.map((tab, index) =>(
                                 <NavItem key={`tab-${index}`} className="flex-fill">
-                                    <NavLink to={tab.route} className="nav-link bottom-nav-link">
+                                    <NavLink to={`/${i18n.language}${tab.route}`} className="nav-link bottom-nav-link">
                                         <div className="row d-flex flex-column">
                                             <FontAwesomeIcon size="lg" icon={tab.icon}/>
-                                            <div className="bottom-tab-label">{tab.label}</div>
+                                            <div className="bottom-tab-label">{t(tab.label).toUpperCase()}</div>
                                         </div>
                                     </NavLink>
                                 </NavItem>

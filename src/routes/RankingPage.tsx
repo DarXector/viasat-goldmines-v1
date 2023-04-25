@@ -5,18 +5,20 @@ import {Spinner} from "reactstrap";
 
 import './RankingPage.css';
 import {RankItem} from "../components/RankItem";
+import {useTranslation} from "react-i18next";
 export function RankingPage() {
     const ranking = useRanking(state => state.ranking);
     const userRanking = useRanking(state => state.userRanking);
     const loading = useRanking(state => state.loading);
     const getRanking = useRanking(state => state.getRanking);
+    const {t, i18n} = useTranslation();
 
     useEffect(() => {
         getRanking();
     }, [ranking, getRanking]);
 
     return (
-        <InnerPage title={'Ranking'}>
+        <InnerPage title={t('ranking')}>
             <div className='page ranking-page'>
                 {loading ? <Spinner color='light' /> :
                 <div className='list scrollable'>

@@ -11,6 +11,7 @@ import hexagonCross from '../assets/images/hexagon_cross.svg';
 
 import './QuestionPage.css';
 import {TransparentButton} from "../components/TransparentButton";
+import {useTranslation} from "react-i18next";
 
 
 export function QuestionPage() {
@@ -25,6 +26,7 @@ export function QuestionPage() {
     const isLastQuestion = useQuestion(state => state.isLastQuestion);
 
     const navigate = useNavigate();
+    const {i18n} = useTranslation();
 
     useEffect(() => {
         getNextQuestion();
@@ -56,7 +58,7 @@ export function QuestionPage() {
                                                                                        isWrongAnswer={wrongAnswer === answer.id}
                                                                                        onClick={() => onAnswer(answer.id)}
                                                                                        order={index}>{answer.text}</AnswerButton>)}
-                        {answered ? <TransparentButton onClick={() => isLastQuestion ? navigate('/ranking') : getNextQuestion(1)}
+                        {answered ? <TransparentButton onClick={() => isLastQuestion ? navigate(`/${i18n.language}/ranking`) : getNextQuestion(1)}
                                                        style={{minHeight: '80px'}}>{isLastQuestion ? 'Finish >' : 'Next Question >'}</TransparentButton> :
                             <CountdownCircleTimer
                                 isPlaying

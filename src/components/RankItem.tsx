@@ -5,8 +5,11 @@ import bookmarkGold from '../assets/images/bookmark_gold.svg';
 import bookmarkSilver from '../assets/images/bookmark_silver.svg';
 import bookmarkBronze from '../assets/images/bookmark_bronze.svg';
 import './RankItem.css';
+import {useTranslation} from "react-i18next";
 
 export function RankItem({user, isCurrentUser}: { user: UserRanking, isCurrentUser?: boolean }) {
+    const {t, i18n} = useTranslation();
+
     return (
         <div className={`rank-item d-flex flex-column ${isCurrentUser ? 'current-user' : ''}`}
              style={{borderColor: user.rank === 1 ? '#CA9431' : (user.rank === 2 ? '#808080' : (user.rank === 3 ? '#A26723' : (isCurrentUser ? '#A51B17' : '')))}}>
@@ -18,19 +21,19 @@ export function RankItem({user, isCurrentUser}: { user: UserRanking, isCurrentUs
                 <div className='d-flex flex-row align-items-center'>
                     <img src={hexagonCheckmark} alt='check'></img>
                     <div className="score-value">{user.correctAnswers}</div>
-                    <div className="score-label">Correct Answers</div>
+                    <div className="score-label">{t('correct_answers')}</div>
                 </div>
                 <span>|</span>
                 <div className='d-flex flex-row align-items-center'>
                     <img src={stopWatchIcon} alt='stopwatch'></img>
                     <div className="time-value">{user.totalTime}</div>
-                    <div className="time-label">Total Time</div>
+                    <div className="time-label">{t('total_time')}</div>
                 </div>
             </div>
             <div className="badge">
                 {user.rank <= 3 ? <img
                     src={user.rank === 1 ? bookmarkGold : (user.rank === 2 ? bookmarkSilver : (user.rank === 3 ? bookmarkBronze : ''))}
-                    alt='badge'></img> : (isCurrentUser ? <div style={{color: '#A51B17', fontSize: '16pt', marginTop: '18px'}}>YOU</div> : '')}
+                    alt='badge'></img> : (isCurrentUser ? <div style={{color: '#A51B17', fontSize: '16pt', marginTop: '18px'}}>{t('you')}</div> : '')}
             </div>
         </div>
     );

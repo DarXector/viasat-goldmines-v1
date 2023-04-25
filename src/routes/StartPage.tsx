@@ -8,36 +8,37 @@ import {Pagination, Scrollbar} from "swiper";
 import {Slide} from "../components/Slide";
 
 import viasatLogoImg from '../assets/images/viasat-explore-logo.png';
-import appTitleImg from '../assets/images/title-ENG.png';
+import appTitleImg from '../assets/images/title-en.png';
 import castImg from '../assets/images/cast.png';
 import {AppButton} from "../components/AppButton";
 import {TransparentButton} from "../components/TransparentButton";
 import {Link} from "react-router-dom";
+import {useTranslation} from "react-i18next";
 
 export function StartPage() {
+    const { t, i18n } = useTranslation()
+
     return (
         <Swiper pagination={true} modules={[Pagination, Scrollbar]} className="my-swiper">
             <SwiperSlide>
                 <Slide>
                     <img className='viasat-logo' alt="Viasat History Logo" src={viasatLogoImg}/>
-                    <p>Welcome to</p>
+                    <p>{t('welcome')}</p>
                     <img className='app-title' alt="Auissie Gold Hunters MINE SOS" src={appTitleImg}/>
-                    <p style={{marginTop: '-20px'}}>Q U I Z Z</p>
+                    <p style={{marginTop: '-20px'}}>{t('quiz').toUpperCase().split('').join(' ')}</p>
                     <img alt="Cast" className='cast-image' src={castImg}/>
                 </Slide>
             </SwiperSlide>
             <SwiperSlide>
                 <Slide>
                     <img className='viasat-logo' alt="Viasat History Logo" src={viasatLogoImg}/>
-                    <p>Welcome to our quizz inspired by Auusie Gold Hunters Mine SOS Show on Viasat Explore channel.</p>
+                    <p>{t('welcome_text')}</p>
                     <br />
-                    <p>Lorem ipsum veteran gold hunter Paul Mackie, geologist Aaron Raddock, and logistics expert Melanie Wood travel to Australia’s toughest frontiers to help restore six struggling gold mining operations to success.</p>
-                    <br />
-                    <Link to='/quiz'>
+                    <Link to={`/${i18n.language}/quiz`}>
                         <AppButton>TAKE A QUIZ</AppButton>
                     </Link>
                     <br />
-                    <Link to='/about'>
+                    <Link to={`/${i18n.language}/about`}>
                         <TransparentButton>ABOUT</TransparentButton>
                     </Link>
                     <br />

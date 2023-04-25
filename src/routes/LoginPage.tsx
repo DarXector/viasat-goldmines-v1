@@ -5,10 +5,12 @@ import viasatLogoImg from "../assets/images/viasat-explore-logo.png";
 import './LoginPage.css';
 import {AppButton} from "../components/AppButton";
 import {Spinner} from "reactstrap";
+import {useTranslation} from "react-i18next";
 
 export function LoginPage() {
     let navigate = useNavigate();
     let location = useLocation();
+    const {t, i18n} = useTranslation();
     const {login} = useUser();
     const pending = useUser(state => state.pending)
 
@@ -32,7 +34,7 @@ export function LoginPage() {
         <div className='login-page page'>
             <img className='viasat-logo' alt="Viasat History Logo" src={viasatLogoImg}/>
             <p>
-                Enter your nickname below and press start when you are ready.
+                {t('login_text')}
             </p>
             <form className='d-flex flex-column align-items-stretch w-75' style={{marginBottom: '20px'}} onSubmit={handleSubmit}>
                 <input className='login-input' name="username" type="text" placeholder="USERNAME" />
