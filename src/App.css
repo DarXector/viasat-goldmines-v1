@@ -224,3 +224,12 @@
     padding: 120px 0 230px 0;
 }
 
+.error {
+    background: #FFFFFF;
+    border-radius: 16px;
+    padding: 10px;
+    color: #A41A16;
+    font-size: 12pt;
+    text-align: center;
+}
+

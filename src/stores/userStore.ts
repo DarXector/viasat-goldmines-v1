@@ -2,11 +2,22 @@ import {create} from "zustand";
 import {persist} from "zustand/middleware";
 import constants from "../data/constants";
 
+export type User = {
+    id: string;
+    name: string;
+    language: string;
+    country: string;
+    current_question_id: string;
+    correct_answers: number;
+    completed: boolean;
+}
+
 type UserStore = {
-    currentUser: string | null | undefined | unknown;
+    currentUser: User | null | undefined | unknown;
     getSessionToken: () => string;
     pending: boolean;
     login: (username: string, country: string) => void;
+    error: string | null;
 }
 
 function getIdToken() {
@@ -14,17 +25,22 @@ function getIdToken() {
 }
 
 async function signInWithUsername(username: string, country: string) {
-    const response = await fetch(constants.API_URL + 'join_game', { method: "POST", body: JSON.stringify({name: username, country: country})});
+    let formData = new FormData();
+    formData.append('name', username);
+    formData.append('country', country);
+    formData.append('language', country);
+
+    const response = await fetch(constants.API_URL + 'join_game', { method: "POST", body: formData});
     if (response.status !== 200) {
         console.error('signInWithUsername response', response);
-        return null;
+        return  {error: response.statusText};
     }
     const parsedResult = await response.json();
     if (parsedResult.error) {
         console.error('signInWithUsername response', parsedResult.error);
-        return null;
+        return {error: parsedResult.error};
     }
-    return await response.json();
+    return parsedResult.player;
 }
 
 export const useUser = create(
@@ -33,11 +49,16 @@ export const useUser = create(
             currentUser: undefined,
             getSessionToken: () => getIdToken(),
             pending: false,
+            error: null,
             login: async (username, country) => {
-                set({pending: true});
+                set({pending: true, error: null});
                 const user = await signInWithUsername(username, country);
                 if (user) {
-                    set({currentUser: user, pending: false});
+                    if (user.error) {
+                        set({error: user.error, pending: false});
+                    } else {
+                        set({currentUser: user, pending: false});
+                    }
                 }
             }
         }),

@@ -12,9 +12,9 @@ export function RankItem({user, isCurrentUser}: { user: UserRanking, isCurrentUs
 
     return (
         <div className={`rank-item d-flex flex-column ${isCurrentUser ? 'current-user' : ''}`}
-             style={{borderColor: user.id === 1 ? '#CA9431' : (user.id === 2 ? '#808080' : (user.id === 3 ? '#A26723' : (isCurrentUser ? '#A51B17' : '')))}}>
+             style={{borderColor: user.rank === 1 ? '#CA9431' : (user.rank === 2 ? '#808080' : (user.rank === 3 ? '#A26723' : (isCurrentUser ? '#A51B17' : '')))}}>
             <div className='user-info d-flex flex-row'>
-                <div className="rank">{user.id}.</div>
+                <div className="rank">{user.rank}.</div>
                 <div className="username">{user.name}</div>
             </div>
             <div className="score d-flex flex-row justify-content-evenly">
@@ -31,9 +31,9 @@ export function RankItem({user, isCurrentUser}: { user: UserRanking, isCurrentUs
                 </div>
             </div>
             <div className="badge">
-                {user.id <= 3 ? <img
-                    src={user.id === 1 ? bookmarkGold : (user.id === 2 ? bookmarkSilver : (user.id === 3 ? bookmarkBronze : ''))}
-                    alt='badge'></img> : (isCurrentUser ? <div style={{color: '#A51B17', fontSize: '16pt', marginTop: '18px'}}>{t('you')}</div> : '')}
+                {isCurrentUser ? <div style={{color: '#A51B17', fontSize: '16pt', marginTop: '18px'}}>{t('you')}</div> : (user.rank <= 3 ? <img
+                    src={user.rank === 1 ? bookmarkGold : (user.rank === 2 ? bookmarkSilver : (user.rank === 3 ? bookmarkBronze : ''))}
+                    alt='badge'></img> : '')}
             </div>
         </div>
     );

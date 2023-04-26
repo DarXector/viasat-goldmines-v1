@@ -16,6 +16,7 @@ const rankingStatic = [
 
 export type UserRanking = {
     id: number;
+    rank: number;
     name: string;
     total_time: string;
     correct_answers: number;
@@ -29,7 +30,7 @@ type RankingStore = {
 }
 
 async function getRanking() {
-    const response = await fetch(contants.API_URL + 'rankings');
+    const response = await fetch(contants.API_URL + 'rankings', { method: "GET", headers: {'Force-Identifier' : '460807c1f88639e897c9a360cb6ae6f7'} });
     if (response.status !== 200) {
         console.error('getRanking response', response);
         return null;

@@ -12,7 +12,8 @@ export function LoginPage() {
     let location = useLocation();
     const {t, i18n} = useTranslation();
     const {login} = useUser();
-    const pending = useUser(state => state.pending)
+    const pending = useUser(state => state.pending);
+    const error = useUser(state => state.error);
 
     let from = location.state?.from?.pathname || "/";
 
@@ -40,6 +41,7 @@ export function LoginPage() {
                 <input className='login-input' name="username" type="text" placeholder="USERNAME" />
                 <AppButton type="submit" inverted={true}>START</AppButton>
             </form>
+            {error ? <div className='error'>{error}</div> : ''}
             {pending? <Spinner color='light' /> : ''}
         </div>
     );

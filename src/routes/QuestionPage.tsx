@@ -23,7 +23,7 @@ export function QuestionPage() {
     const isCorrect = useQuestion(state => state.isCorrect);
     const correctAnswer = useQuestion(state => state.correctAnswer);
     const wrongAnswer = useQuestion(state => state.wrongAnswer);
-    const isLastQuestion = useQuestion(state => state.isLastQuestion);
+    const completed = useQuestion(state => state.completed);
 
     const navigate = useNavigate();
     const {i18n} = useTranslation();
@@ -58,8 +58,8 @@ export function QuestionPage() {
                                                                                        isWrongAnswer={wrongAnswer === answer.id}
                                                                                        onClick={() => onAnswer(answer.id)}
                                                                                        order={index}>{answer.text}</AnswerButton>)}
-                        {answered ? <TransparentButton onClick={() => isLastQuestion ? navigate(`/${i18n.language}/ranking`) : getNextQuestion(1)}
-                                                       style={{minHeight: '80px'}}>{isLastQuestion ? 'Finish >' : 'Next Question >'}</TransparentButton> :
+                        {answered ? <TransparentButton onClick={() => completed ? navigate(`/${i18n.language}/ranking`) : getNextQuestion(1)}
+                                                       style={{minHeight: '80px'}}>{completed ? 'Finish >' : 'Next Question >'}</TransparentButton> :
                             <CountdownCircleTimer
                                 isPlaying
                                 size={100}

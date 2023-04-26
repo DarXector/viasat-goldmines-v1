@@ -1,12 +1,10 @@
 import {create} from "zustand";
-import {persist} from "zustand/middleware";
-import majdanpekMap from '../assets/maps/majdanpek_map.png';
-import leceMap from '../assets/maps/lece_map.png';
-import q3Bg from '../assets/maps/q3_bg.png';
+import contants from "../data/constants";
+import constants from "../data/constants";
 
-let currentQuestionIndex = 0;
+//let currentQuestionIndex = 0;
 
-const questions: Question[] = [
+/*const questions: Question[] = [
     {
         id: 'q1',
         text: 'What is the name of the mine shown on the map of Serbia?',
@@ -15,15 +13,12 @@ const questions: Question[] = [
             {
                 id: 'a1',
                 text: 'Bor',
-                correct: false,
             },{
                 id: 'a2',
                 text: 'Majdanpek',
-                correct: true,
             },{
                 id: 'a3',
                 text: 'Kolubara',
-                correct: false,
             }
         ]
     },{
@@ -34,15 +29,12 @@ const questions: Question[] = [
             {
                 id: 'a1',
                 text: 'Lece',
-                correct: true,
             },{
                 id: 'a2',
                 text: 'Trepca',
-                correct: false,
             },{
                 id: 'a3',
                 text: 'Majdanpek',
-                correct: false,
             }
         ]
     },{
@@ -65,12 +57,11 @@ const questions: Question[] = [
             }
         ]
     },
-]
+]*/
 
 export type Answer = {
     id: string;
     text: string;
-    correct: boolean;
 }
 
 export type Question = {
@@ -85,28 +76,62 @@ type QuestionStore = {
     currentQuestion: Question | unknown;
     loading: boolean;
     isCorrect: boolean;
-    isLastQuestion: boolean;
+    completed: boolean;
     answered: boolean;
     correctAnswer: string;
     wrongAnswer: string;
-    answer: (id:string) => Promise<boolean>;
+    answer: (id:string) => void;
 }
 
-function getNextQuestion() {
-    return new Promise((resolve, reject) => {
-        console.log(currentQuestionIndex, 'currentQuestion');
-        setTimeout(() => {
-            resolve(questions[currentQuestionIndex]);
-        }, 1000);
-    })
+async function getNextQuestion() {
+    const response = await fetch(contants.API_URL + 'get_question', { method: "GET", headers: {'Force-Identifier' : '460807c1f88639e897c9a360cb6ae6f7'} });
+    if (response.status !== 200) {
+        console.error('getNextQuestion response', response);
+        return null;
+    }
+    console.log('getNextQuestion response', response);
+    const parsedResult = await response.json();
+    if (parsedResult.error) {
+        console.error('getNextQuestion response', parsedResult.error);
+        return null;
+    }
+    return {
+        id: parsedResult.question.id,
+        text: parsedResult.question.question,
+        map: parsedResult.question.map_image,
+        answers: [
+            {
+                id: '1',
+                text: parsedResult.question.answer_1,
+            },
+            {
+                id: '2',
+                text: parsedResult.question.answer_2,
+            },
+            {
+                id: '3',
+                text: parsedResult.question.answer_3,
+            },
+        ]
+    };
 }
 
-function answerQuestion(id: string) {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve(questions[currentQuestionIndex]);
-        }, 1000);
-    })
+async function answerQuestion(id: string) {
+    let formData = new FormData();
+    formData.append('answer_id', id);
+
+    const response = await fetch(constants.API_URL + 'answer_question ', { method: "POST", body: formData, headers: {'Force-Identifier' : '460807c1f88639e897c9a360cb6ae6f7'} });
+    if (response.status !== 200) {
+        console.error('answerQuestion response', response);
+        return  {error: response.statusText};
+    }
+    console.log('answerQuestion response', response);
+    const parsedResult = await response.json();
+    if (parsedResult.error) {
+        console.error('answerQuestion response', parsedResult.error);
+        return {error: parsedResult.error};
+    }
+    return parsedResult;
 }
 
 export const useQuestion = create<QuestionStore>(
@@ -116,26 +141,18 @@ export const useQuestion = create<QuestionStore>(
         correctAnswer: '',
         wrongAnswer: '',
         answered: false,
-        isLastQuestion: false,
+        completed: false,
         loading: false,
         getNextQuestion: async (iterate: number = 0) => {
             if (get().loading) return;
             set({loading: true, answered: false, correctAnswer: '', wrongAnswer: ''});
-            currentQuestionIndex += iterate;
             const question = await getNextQuestion();
             console.log('question', question);
-            set({currentQuestion: question, loading: false, isLastQuestion: currentQuestionIndex === questions.length - 1});
+            set({currentQuestion: question, loading: false, completed: false});
         },
-        answer: (id:string) => {
-            const question = get().currentQuestion as Question;
-            const correctAnswer = question.answers.find((answer => answer.correct)) as Answer;
-            const answeredCorrectly = correctAnswer.id === id;
-            return new Promise((resolve, reject) => {
-                setTimeout(() => {
-                    set({isCorrect: answeredCorrectly, correctAnswer: correctAnswer.id, wrongAnswer: answeredCorrectly ? '' : id, answered: true});
-                    resolve(answeredCorrectly);
-                });
-            })
+        answer: async (id:string) => {
+            const response = await answerQuestion(id);
+            set({isCorrect: response.is_correct, correctAnswer: response.correct_answer_id.toString(), wrongAnswer: response.is_correct ? '' : id, answered: true, completed: response.player.completed});
         }
     }),
 );
