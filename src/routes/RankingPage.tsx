@@ -22,7 +22,7 @@ export function RankingPage() {
             <div className='page ranking-page'>
                 {loading ? <Spinner color='light' /> :
                 <div className='list scrollable'>
-                    { ranking.map(item => <RankItem key={item.name} user={item} />) }
+                    { ranking.map((item, index) => <RankItem key={item.name} user={item} rank={index + 1} />) }
                 </div>}
 
                 {userRanking ? <div className='fixed-rank d-flex flex-column align-items-center'>

@@ -84,7 +84,7 @@ type QuestionStore = {
 }
 
 async function getNextQuestion() {
-    const response = await fetch(contants.API_URL + 'get_question', { method: "GET", headers: {'Force-Identifier' : '460807c1f88639e897c9a360cb6ae6f7'} });
+    const response = await fetch(contants.API_URL + 'get_question', { method: "GET", /*headers: {'Force-Identifier' : '2df366186aeda8a0540243e18fc472ec'}*/ });
     if (response.status !== 200) {
         console.error('getNextQuestion response', response);
         return null;
@@ -120,7 +120,7 @@ async function answerQuestion(id: string) {
     let formData = new FormData();
     formData.append('answer_id', id);
 
-    const response = await fetch(constants.API_URL + 'answer_question ', { method: "POST", body: formData, headers: {'Force-Identifier' : '460807c1f88639e897c9a360cb6ae6f7'} });
+    const response = await fetch(constants.API_URL + 'answer_question ', { method: "POST", body: formData, /*headers: {'Force-Identifier' : '2df366186aeda8a0540243e18fc472ec'}*/ });
     if (response.status !== 200) {
         console.error('answerQuestion response', response);
         return  {error: response.statusText};

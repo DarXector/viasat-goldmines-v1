@@ -12,6 +12,8 @@ import hexagonCross from '../assets/images/hexagon_cross.svg';
 import './QuestionPage.css';
 import {TransparentButton} from "../components/TransparentButton";
 import {useTranslation} from "react-i18next";
+import constants from "../data/constants";
+import defaultBg from "../assets/maps/q3_bg.png";
 
 
 export function QuestionPage() {
@@ -34,6 +36,10 @@ export function QuestionPage() {
 
     if (currentQuestion) {
         console.log("currentQuestion.map: ", currentQuestion.map);
+    } else if (!loading) {
+        setTimeout(() => {
+            navigate(`/${i18n.language}/ranking`);
+        }, 0);
     }
 
     function onAnswer(id: string) {
@@ -43,9 +49,9 @@ export function QuestionPage() {
 
     return <InnerPage title={`Question ${1}`}>
         <div className='question-page page'
-             style={currentQuestion ? {backgroundImage: `url(${currentQuestion.map})`} as CSSProperties : undefined}>
+             style={currentQuestion ? {backgroundImage: currentQuestion.map ? `url(${constants.BASE_URL}${currentQuestion.map})` : `url(${defaultBg})`} as CSSProperties : undefined}>
             {loading ? <Spinner color={'light'}/> :
-                <div
+                currentQuestion && <div
                     className={`d-flex flex-column justify-content-between align-items-center question-container ${answered ? 'answered' : ''}`}>
                     <div className='question w-75'>{currentQuestion?.text}</div>
                     {answered ? <div className='answer-result d-flex flex-row align-items-center'>

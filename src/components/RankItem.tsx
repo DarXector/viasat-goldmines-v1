@@ -7,14 +7,15 @@ import bookmarkBronze from '../assets/images/bookmark_bronze.svg';
 import './RankItem.css';
 import {useTranslation} from "react-i18next";
 
-export function RankItem({user, isCurrentUser}: { user: UserRanking, isCurrentUser?: boolean }) {
+export function RankItem({user, isCurrentUser, rank}: { user: UserRanking, rank?:number, isCurrentUser?: boolean }) {
     const {t, i18n} = useTranslation();
+    const currentRank = user.rank || rank || 0;
 
     return (
         <div className={`rank-item d-flex flex-column ${isCurrentUser ? 'current-user' : ''}`}
-             style={{borderColor: user.rank === 1 ? '#CA9431' : (user.rank === 2 ? '#808080' : (user.rank === 3 ? '#A26723' : (isCurrentUser ? '#A51B17' : '')))}}>
+             style={{borderColor: currentRank === 1 ? '#CA9431' : (currentRank === 2 ? '#808080' : (currentRank === 3 ? '#A26723' : (isCurrentUser ? '#A51B17' : '')))}}>
             <div className='user-info d-flex flex-row'>
-                <div className="rank">{user.rank}.</div>
+                <div className="rank">{currentRank}.</div>
                 <div className="username">{user.name}</div>
             </div>
             <div className="score d-flex flex-row justify-content-evenly">
@@ -31,8 +32,8 @@ export function RankItem({user, isCurrentUser}: { user: UserRanking, isCurrentUs
                 </div>
             </div>
             <div className="badge">
-                {isCurrentUser ? <div style={{color: '#A51B17', fontSize: '16pt', marginTop: '18px'}}>{t('you')}</div> : (user.rank <= 3 ? <img
-                    src={user.rank === 1 ? bookmarkGold : (user.rank === 2 ? bookmarkSilver : (user.rank === 3 ? bookmarkBronze : ''))}
+                {isCurrentUser ? <div style={{color: '#A51B17', fontSize: '16pt', marginTop: '18px'}}>{t('you')}</div> : (currentRank <= 3 ? <img
+                    src={currentRank === 1 ? bookmarkGold : (currentRank === 2 ? bookmarkSilver : (currentRank === 3 ? bookmarkBronze : ''))}
                     alt='badge'></img> : '')}
             </div>
         </div>
