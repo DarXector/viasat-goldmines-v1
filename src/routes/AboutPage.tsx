@@ -38,7 +38,6 @@ export function AboutPage() {
                         <p className='premiere-line-1'>{t('about_text_6')}</p>
                         <p className='premiere-line-2'>{t('about_text_7')}</p>
                     </div>
-                    <br />
                     {
                         scheduleRerun.map((item, index) => <EpisodeInfo key={item.id} title={`${t('episode')} ${item.title}`} day={`${t(item.day)} ${item.date}`} time={item.time}/>)
                     }

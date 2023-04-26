@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClipboardQuestion, faCompass, faTrophy, faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 import {Nav, NavItem} from "reactstrap";
 import {useTranslation} from "react-i18next";
+import CookieConsent from "react-cookie-consent";
 
 const tabs = [{
     route: "/about",
@@ -47,6 +48,14 @@ export function Layout() {
                     </div>
                 </Nav>
             </nav>
+            <CookieConsent
+                location="bottom"
+                buttonText={t('save')}
+                style={{ background: "#2B373B", color: "#fff", fontSize: "9pt" }}
+                buttonStyle={{ color: "#fff", fontSize: "11pt", borderRadius: "10px", background: "#A41A16", border: "none" }}
+            >
+                {t('cookies_popup_text')}
+            </CookieConsent>
         </div>
     );
 }

@@ -26,7 +26,7 @@ export function LoginPage() {
             console.log("userStore.subscribe: ", useUser.getState());
             navigate(from, { replace: true });
         })
-        await login(username);
+        await login(username, i18n.language);
         unsub1();
     }
 

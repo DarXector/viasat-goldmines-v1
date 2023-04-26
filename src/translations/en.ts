@@ -1,5 +1,7 @@
 import titleLogo from '../assets/images/title-en.png';
+import viasatLogo from '../assets/images/viasat-explore-logo.png';
 export default {
+    viasatLogo: viasatLogo,
     logo: titleLogo,
     quiz: 'Quiz',
     about: 'About',
@@ -28,4 +30,6 @@ export default {
     how_to_play_text_2: 'Before you start the quiz it is important to enter your name or nickname, so you could check your score later. ',
     how_to_play_text_3: 'The quiz consists of general knowledge questions about gold and of some localised gold mining questions. Your answering time for each question is limited. The number of correct answers and time spent on answering are add together and you can check your position on the score table after you finish the quiz.',
     how_to_play_text_4: 'TWe believe that you will learn something new and if you want to witness first-hand how to hunt for gold, we recommend you tune in for Aussie Gold Hunters Mine SOS series on Viasat Explore every Monday in May at 21.00. Look for our channel at your cable TV provider.',
+    save: 'Save',
+    cookies_popup_text: 'Our website uses cookies to understand how people use our website in order for us to improve the website. By ticking the box of our popup Analytics windows, you hereby consent to our use of cookies as defined in this Cookies Policy. If you do not consent to the use of Web Operations Cookies, you may block or disable them using your browser settings and by unchecking the available checkbox, the opt-out links set out in this Cookies Policy. However, blocking all cookies may have a negative impact on your use of this website.',
 }
