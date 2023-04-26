@@ -15,14 +15,14 @@ export function RankingPage() {
 
     useEffect(() => {
         getRanking();
-    }, [ranking, getRanking]);
+    }, []);
 
     return (
         <InnerPage title={t('ranking')}>
             <div className='page ranking-page'>
                 {loading ? <Spinner color='light' /> :
                 <div className='list scrollable'>
-                    { ranking.map(item => <RankItem key={item.username} user={item} />) }
+                    { ranking.map(item => <RankItem key={item.name} user={item} />) }
                 </div>}
 
                 {userRanking ? <div className='fixed-rank d-flex flex-column align-items-center'>

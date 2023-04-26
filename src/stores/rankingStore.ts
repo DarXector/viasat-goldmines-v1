@@ -1,4 +1,5 @@
 import {create} from "zustand";
+import contants from "../data/constants";
 
 const rankingStatic = [
     {rank: 1, username: "user1", totalTime: "1:00", correctAnswers: 10},
@@ -14,10 +15,10 @@ const rankingStatic = [
 ]
 
 export type UserRanking = {
-    rank: number;
-    username: string;
-    totalTime: string;
-    correctAnswers: number;
+    id: number;
+    name: string;
+    total_time: string;
+    correct_answers: number;
 }
 
 type RankingStore = {
@@ -27,15 +28,21 @@ type RankingStore = {
     getRanking: () => Promise<void>;
 }
 
-function getRanking(): Promise<{ ranking: UserRanking[], userRanking: UserRanking }> {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve({
-                ranking: rankingStatic,
-                userRanking: {rank: 12, username: "user1", totalTime: "1:00", correctAnswers: 10}
-            });
-        }, 1000);
-    })
+async function getRanking() {
+    const response = await fetch(contants.API_URL + 'rankings');
+    if (response.status !== 200) {
+        console.error('getRanking response', response);
+        return null;
+    }
+    const parsedResult = await response.json();
+    if (parsedResult.error) {
+        console.error('getRanking response', parsedResult.error);
+        return null;
+    }
+    return {
+        ranking: parsedResult.top_players,
+        userRanking: parsedResult.player_rank
+    };
 }
 
 export const useRanking = create<RankingStore>(
@@ -46,7 +53,9 @@ export const useRanking = create<RankingStore>(
         getRanking: async () => {
             set({loading: true});
             const ranking = await getRanking();
-            set({ranking: ranking.ranking, userRanking: ranking.userRanking, loading: false})
+            if (ranking) {
+                set({ranking: ranking.ranking, userRanking: ranking.userRanking, loading: false})
+            }
         }
     })
 );
