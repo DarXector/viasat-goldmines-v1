@@ -81,6 +81,24 @@ type QuestionStore = {
     correctAnswer: string;
     wrongAnswer: string;
     answer: (id:string) => void;
+    resetQuestions: () => void;
+}
+
+async function resetQuestions() {
+    const response = await fetch(contants.API_URL + 'new_game', { method: "GET", /*headers: {'Force-Identifier' : '7023e2349c22dbb9fe3ebe2624cb58f8'}*/ });
+    if (response.status !== 200) {
+        console.error('resetQuestions response', response);
+        return null;
+    }
+    console.log('resetQuestions response', response);
+    const parsedResult = await response.json();
+    if (parsedResult.error) {
+        console.error('resetQuestions response', parsedResult.error);
+        return null;
+    }
+    return {
+        result: parsedResult
+    };
 }
 
 async function getNextQuestion() {
@@ -153,6 +171,9 @@ export const useQuestion = create<QuestionStore>(
         answer: async (id:string) => {
             const response = await answerQuestion(id);
             set({isCorrect: response.is_correct, correctAnswer: response.correct_answer_id.toString(), wrongAnswer: response.is_correct ? '' : id, answered: true, completed: response.player.completed});
+        },
+        resetQuestions: async () => {
+            const response = await resetQuestions();
         }
     }),
 );

@@ -18,10 +18,12 @@ import {useTranslation} from "react-i18next";
 import {Helmet} from "react-helmet";
 import translations from "./translations";
 import constants from "./data/constants";
+import {useUser} from "./stores/userStore";
 
 function App() {
     // Translation hook
     const {t, i18n} = useTranslation();
+    const getPlayerInfo = useUser(state => state.getPlayerInfo);
     // React Router location hook
     const loc = useLocation();
     useEffect(() => {
@@ -35,6 +37,10 @@ function App() {
             i18n.changeLanguage(lang);
         }
     }, [loc, i18n]);
+
+    useEffect(() => {
+        getPlayerInfo();
+    }, []);
 
     const routes = () => {
         return(

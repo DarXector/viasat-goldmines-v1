@@ -15,6 +15,7 @@ import {useTranslation} from "react-i18next";
 import constants from "../data/constants";
 import defaultBg from "../assets/maps/q3_bg.png";
 import ReactGA from "react-ga4";
+import {User, useUser} from "../stores/userStore";
 
 
 export function QuestionPage() {
@@ -22,11 +23,14 @@ export function QuestionPage() {
     const getNextQuestion = useQuestion(state => state.getNextQuestion);
     const loading = useQuestion(state => state.loading);
     const answer = useQuestion(state => state.answer);
+    const resetQuestions = useQuestion(state => state.resetQuestions);
     const answered = useQuestion(state => state.answered);
     const isCorrect = useQuestion(state => state.isCorrect);
     const correctAnswer = useQuestion(state => state.correctAnswer);
     const wrongAnswer = useQuestion(state => state.wrongAnswer);
     const completed = useQuestion(state => state.completed);
+
+    const currentUser = useUser(state => state.currentUser) as User;
 
     const navigate = useNavigate();
     const {t, i18n} = useTranslation();
@@ -37,15 +41,18 @@ export function QuestionPage() {
     }, [location]);
 
     useEffect(() => {
-        getNextQuestion();
+        console.log('useEffect checkQuestionsState');
+        checkQuestionsState();
     }, []);
 
-    if (currentQuestion) {
-        console.log("currentQuestion.map: ", currentQuestion.map);
-    } else if (!loading) {
-        setTimeout(() => {
-            navigate(`/${i18n.language}/ranking`);
-        }, 0);
+
+
+    async function checkQuestionsState () {
+        console.log('checkQuestionsState', currentUser);
+        if (currentUser && currentUser.completed) {
+            await resetQuestions();
+        }
+        getNextQuestion();
     }
 
     function onAnswer(id: string) {
@@ -78,7 +85,13 @@ export function QuestionPage() {
                                                                                        isWrongAnswer={wrongAnswer === answer.id}
                                                                                        onClick={() => onAnswer(answer.id)}
                                                                                        order={index}>{answer.text}</AnswerButton>)}
-                        {answered ? <TransparentButton onClick={() => completed ? navigate(`/${i18n.language}/ranking`) : getNextQuestion(1)}
+                        {answered ? <TransparentButton onClick={() => {
+                            if (completed) {
+                                navigate(`/${i18n.language}/ranking`);
+                            } else {
+                                getNextQuestion(1)
+                            }
+                        }}
                                                        style={{minHeight: '80px'}}>{completed ? `${t('finish').toUpperCase()} >` : `${t('next_question').toUpperCase()} >`}</TransparentButton> :
                             <CountdownCircleTimer
                                 isPlaying

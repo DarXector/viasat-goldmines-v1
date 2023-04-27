@@ -13,10 +13,11 @@ export type User = {
 }
 
 type UserStore = {
-    currentUser: User | null | undefined | unknown;
+    currentUser: User | null;
     getSessionToken: () => string;
     pending: boolean;
     login: (username: string, country: string) => void;
+    getPlayerInfo: () => void;
     error: string | null;
 }
 
@@ -43,10 +44,24 @@ async function signInWithUsername(username: string, country: string) {
     return parsedResult.player;
 }
 
+async function getPlayerInfo() {
+    const response = await fetch(constants.API_URL + 'player_info', { method: "GET", /*headers: {'Force-Identifier' : '7023e2349c22dbb9fe3ebe2624cb58f8'}*/ });
+    if (response.status !== 200) {
+        console.error('getPlayerInfo response', response);
+        return  {error: response.statusText};
+    }
+    const parsedResult = await response.json();
+    if (parsedResult.error) {
+        console.error('getPlayerInfo response', parsedResult.error);
+        return {error: parsedResult.error};
+    }
+    return parsedResult.player;
+}
+
 export const useUser = create(
     persist<UserStore>(
         (set, get) => ({
-            currentUser: undefined,
+            currentUser: null,
             getSessionToken: () => getIdToken(),
             pending: false,
             error: null,
@@ -59,6 +74,21 @@ export const useUser = create(
                     } else {
                         set({currentUser: user, pending: false});
                     }
+                } else {
+                    set({pending: false});
+                }
+            },
+            getPlayerInfo: async () => {
+                set({pending: true, error: null});
+                const user = await getPlayerInfo();
+                if (user) {
+                    if (user.error) {
+                        set({error: user.error, pending: false});
+                    } else {
+                        set({currentUser: user, pending: false});
+                    }
+                } else {
+                    set({pending: false});
                 }
             }
         }),

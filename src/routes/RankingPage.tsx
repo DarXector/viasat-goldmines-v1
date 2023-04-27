@@ -8,6 +8,7 @@ import {RankItem} from "../components/RankItem";
 import {useTranslation} from "react-i18next";
 import {useLocation} from "react-router-dom";
 import ReactGA from "react-ga4";
+import {useUser} from "../stores/userStore";
 export function RankingPage() {
     const ranking = useRanking(state => state.ranking);
     const userRanking = useRanking(state => state.userRanking);
@@ -15,12 +16,14 @@ export function RankingPage() {
     const getRanking = useRanking(state => state.getRanking);
     const {t, i18n} = useTranslation();
     const location = useLocation();
+    const getPlayerInfo = useUser(state => state.getPlayerInfo);
 
     useEffect(() => {
         ReactGA.send({ hitType: "pageview", page: location.pathname + location.search + location.hash });
     }, [location]);
 
     useEffect(() => {
+        getPlayerInfo();
         getRanking();
     }, []);
 
