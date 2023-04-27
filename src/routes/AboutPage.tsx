@@ -5,13 +5,21 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 import {schedule, scheduleRerun} from "../data/schedule";
 import {EpisodeInfo} from "../components/EpisodeInfo";
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import {AppButton} from "../components/AppButton";
 import {TransparentButton} from "../components/TransparentButton";
 import {useTranslation} from "react-i18next";
+import {useEffect} from "react";
+import ReactGA from "react-ga4";
 
 export function AboutPage() {
     const {t, i18n} = useTranslation();
+    const location = useLocation();
+
+    useEffect(() => {
+        ReactGA.send({ hitType: "pageview", page: location.pathname + location.search + location.hash });
+    }, [location]);
+
     return (
         <InnerPage title={t('about')} scrollable={true}>
             <div className='page about-page'>

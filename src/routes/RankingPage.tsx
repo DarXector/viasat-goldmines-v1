@@ -6,12 +6,19 @@ import {Spinner} from "reactstrap";
 import './RankingPage.css';
 import {RankItem} from "../components/RankItem";
 import {useTranslation} from "react-i18next";
+import {useLocation} from "react-router-dom";
+import ReactGA from "react-ga4";
 export function RankingPage() {
     const ranking = useRanking(state => state.ranking);
     const userRanking = useRanking(state => state.userRanking);
     const loading = useRanking(state => state.loading);
     const getRanking = useRanking(state => state.getRanking);
     const {t, i18n} = useTranslation();
+    const location = useLocation();
+
+    useEffect(() => {
+        ReactGA.send({ hitType: "pageview", page: location.pathname + location.search + location.hash });
+    }, [location]);
 
     useEffect(() => {
         getRanking();

@@ -6,6 +6,8 @@ import './LoginPage.css';
 import {AppButton} from "../components/AppButton";
 import {Spinner} from "reactstrap";
 import {useTranslation} from "react-i18next";
+import {useEffect} from "react";
+import ReactGA from "react-ga4";
 
 export function LoginPage() {
     let navigate = useNavigate();
@@ -16,6 +18,10 @@ export function LoginPage() {
     const error = useUser(state => state.error);
 
     let from = location.state?.from?.pathname || "/";
+
+    useEffect(() => {
+        ReactGA.send({ hitType: "pageview", page: location.pathname + location.search + location.hash });
+    }, [location]);
 
     async function handleSubmit (event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();

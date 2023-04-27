@@ -1,6 +1,9 @@
 import titleLogo from "../assets/images/title-hr.png";
 import viasatLogo from "../assets/images/viasat-explore-logo.png";
+import metaImage from '../assets/images/AGH-Share-1200x630-HR.jpg';
 export default {
+    site_url: 'https://viasatexplore-game.com/hr/',
+    metaImage: metaImage,
     viasatLogo: viasatLogo,
     logo: titleLogo,
     quiz: 'Kviz',

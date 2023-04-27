@@ -15,11 +15,13 @@ import {AboutPage} from "./routes/AboutPage";
 import {HowToPage} from "./routes/HowToPage";
 import {RankingPage} from "./routes/RankingPage";
 import {useTranslation} from "react-i18next";
+import {Helmet} from "react-helmet";
 import translations from "./translations";
+import constants from "./data/constants";
 
 function App() {
     // Translation hook
-    const { i18n} = useTranslation();
+    const {t, i18n} = useTranslation();
     // React Router location hook
     const loc = useLocation();
     useEffect(() => {
@@ -71,6 +73,18 @@ function App() {
 
   return (
     <div className="App">
+        <Helmet>
+            <title>{t('about_text_2').toString()}</title>
+            <meta name="description" content={t('welcome_text').toString()}/>
+            <meta property="og:title" content={t('about_text_2').toString()} />
+            <meta property="og:url" content={t('site_url').toString()} />
+            <meta property="og:image" content={constants.BASE_URL + t('metaImage').toString()} />
+            <meta property="og:description" content={t('welcome_text').toString()} />
+            <meta name="twitter:title" content={t('about_text_2').toString()} />
+            <meta name="twitter:description" content={t('welcome_text').toString()}/>
+            <meta name="twitter:image" content={constants.BASE_URL + t('metaImage').toString()}/>
+            <meta name="twitter:card" content="summary_large_image"/>
+        </Helmet>
       <Routes>
           {/* If the user visits test.com, redirect them to the appropriate page for their language. For example test.com -> test.com/en */}
           <Route key={'index_route'} path={"/"} element={<Navigate to={`${i18n.language}`} replace />} />

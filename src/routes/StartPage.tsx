@@ -12,11 +12,19 @@ import appTitleImg from '../assets/images/title-en.png';
 import castImg from '../assets/images/cast.png';
 import {AppButton} from "../components/AppButton";
 import {TransparentButton} from "../components/TransparentButton";
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import {useTranslation} from "react-i18next";
+import {useEffect} from "react";
+import ReactGA from "react-ga4";
 
 export function StartPage() {
     const { t, i18n } = useTranslation();
+
+    const location = useLocation();
+
+    useEffect(() => {
+        ReactGA.send({ hitType: "pageview", page: location.pathname + location.search + location.hash });
+    }, [location]);
 
     return (
         <Swiper pagination={true} modules={[Pagination, Scrollbar]} className="my-swiper">
