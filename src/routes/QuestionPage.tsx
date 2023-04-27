@@ -28,7 +28,7 @@ export function QuestionPage() {
     const completed = useQuestion(state => state.completed);
 
     const navigate = useNavigate();
-    const {i18n} = useTranslation();
+    const {t, i18n} = useTranslation();
 
     useEffect(() => {
         getNextQuestion();
@@ -47,7 +47,7 @@ export function QuestionPage() {
         answer(id);
     }
 
-    return <InnerPage title={`Question ${1}`}>
+    return <InnerPage title={`${t('question')} ${1}`}>
         <div className='question-page page'
              style={currentQuestion ? {backgroundImage: currentQuestion.map ? `url(${constants.BASE_URL}${currentQuestion.map})` : `url(${defaultBg})`} as CSSProperties : undefined}>
             {loading ? <Spinner color={'light'}/> :
@@ -56,7 +56,7 @@ export function QuestionPage() {
                     <div className='question w-75'>{currentQuestion?.text}</div>
                     {answered ? <div className='answer-result d-flex flex-row align-items-center'>
                         <img src={isCorrect ? hexagonCheck : hexagonCross} alt={'Answer Icon'}/>
-                        {isCorrect ? 'Correct Answer!' : 'Wrong Answer!'}
+                        {isCorrect ? t('correct_answer') : t('wrong_answer')}
                     </div> : ''}
                     <div className='d-flex flex-column align-items-center w-75'>
                         {currentQuestion?.answers.map((answer, index) => <AnswerButton key={answer.id}
@@ -65,7 +65,7 @@ export function QuestionPage() {
                                                                                        onClick={() => onAnswer(answer.id)}
                                                                                        order={index}>{answer.text}</AnswerButton>)}
                         {answered ? <TransparentButton onClick={() => completed ? navigate(`/${i18n.language}/ranking`) : getNextQuestion(1)}
-                                                       style={{minHeight: '80px'}}>{completed ? 'Finish >' : 'Next Question >'}</TransparentButton> :
+                                                       style={{minHeight: '80px'}}>{completed ? `${t('finish').toUpperCase()} >` : `${t('next_question').toUpperCase()} >`}</TransparentButton> :
                             <CountdownCircleTimer
                                 isPlaying
                                 size={100}

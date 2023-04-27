@@ -3,6 +3,7 @@
 }
 
 .App {
+    position: relative;
     text-align: center;
     width: 100%;
     max-width: 720px;
@@ -18,8 +19,13 @@
 }
 
 .navbar {
+    position: sticky;
+    bottom: 0;
+    width: inherit;
+    z-index: 3;
     box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.6);
     border-bottom: solid 1px #EBEBEB;
+    background: #FFFFFF;
 }
 
 .bottom-tab-nav {
@@ -33,7 +39,7 @@
 
 .nav-link, .bottom-nav-link {
     color: #808080;
-    font-size: 16pt;
+    font-size: 14pt;
 }
 
 .bottom-nav-link svg{

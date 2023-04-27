@@ -5,7 +5,7 @@
     border: 4px solid rgba(255, 255, 255, 0);
     width: 90%;
     padding: 10px 10px;
-    font-size: 16pt;
+    font-size: 14pt;
     margin-bottom: 10px;
 }
 
@@ -34,7 +34,7 @@
 }
 
 .rank-item .score .score-label, .rank-item .score .time-label {
-    font-size: 12pt;
+    font-size: 10pt;
     color: #7F7F7F;
 }
 
