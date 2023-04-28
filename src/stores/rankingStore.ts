@@ -17,7 +17,7 @@ type RankingStore = {
 }
 
 async function getRanking() {
-    const response = await fetch(contants.API_URL + 'rankings', { method: "GET", /*headers: {'Force-Identifier' : '2df366186aeda8a0540243e18fc472ec'}*/ });
+    const response = await fetch(contants.API_URL + 'rankings', { method: "GET", /*headers: {'Force-Identifier' : '6359f6e0e34c4987fefac23aef282a9f'}*/ });
     if (response.status !== 200) {
         console.error('getRanking response', response);
         return null;

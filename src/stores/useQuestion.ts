@@ -85,7 +85,7 @@ type QuestionStore = {
 }
 
 async function resetQuestions() {
-    const response = await fetch(contants.API_URL + 'new_game', { method: "GET", /*headers: {'Force-Identifier' : '7023e2349c22dbb9fe3ebe2624cb58f8'}*/ });
+    const response = await fetch(contants.API_URL + 'new_game', { method: "GET", /*headers: {'Force-Identifier' : '6359f6e0e34c4987fefac23aef282a9f'}*/ });
     if (response.status !== 200) {
         console.error('resetQuestions response', response);
         return null;
@@ -102,7 +102,7 @@ async function resetQuestions() {
 }
 
 async function getNextQuestion() {
-    const response = await fetch(contants.API_URL + 'get_question', { method: "GET", /*headers: {'Force-Identifier' : '7023e2349c22dbb9fe3ebe2624cb58f8'}*/ });
+    const response = await fetch(contants.API_URL + 'get_question', { method: "GET", /*headers: {'Force-Identifier' : '6359f6e0e34c4987fefac23aef282a9f'}*/ });
     if (response.status !== 200) {
         console.error('getNextQuestion response', response);
         return null;
@@ -138,7 +138,7 @@ async function answerQuestion(id: string) {
     let formData = new FormData();
     formData.append('answer_id', id);
 
-    const response = await fetch(constants.API_URL + 'answer_question ', { method: "POST", body: formData, /*headers: {'Force-Identifier' : '7023e2349c22dbb9fe3ebe2624cb58f8'}*/ });
+    const response = await fetch(constants.API_URL + 'answer_question ', { method: "POST", body: formData, /*headers: {'Force-Identifier' : '6359f6e0e34c4987fefac23aef282a9f'}*/ });
     if (response.status !== 200) {
         console.error('answerQuestion response', response);
         return  {error: response.statusText};

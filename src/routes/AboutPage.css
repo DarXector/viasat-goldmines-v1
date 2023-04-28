@@ -10,7 +10,7 @@
 .about-page .subtitle{
     color: #FFFFFF;
     max-width: 80%;
-    font-size: 20pt;
+    font-size: 1.7rem;
     text-shadow: 2px 2px 6px rgba(0, 0, 0, 1);
 }
 
@@ -30,5 +30,5 @@
     font-weight: 700;
     margin: 0;
     color: #A51B17;
-    font-size: 18pt;
+    font-size: 1.5rem;
 }

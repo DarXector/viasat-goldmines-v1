@@ -10,7 +10,7 @@ export default {
     about: 'About',
     how_to_play: 'How to play',
     ranking: 'Ranking',
-    welcome_text: 'Welcome to our quiz inspired by  "Aussie Gold Hunters Mine SOS" series on Viasat Explore channel.',
+    welcome_text: 'Welcome to our quiz inspired by "Aussie Gold Hunters Mine SOS" series on Viasat Explore channel.',
     welcome: 'Welcome to',
     episode: 'Episode',
     monday: 'Mon',

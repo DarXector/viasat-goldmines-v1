@@ -19,3 +19,36 @@ code {
     align-items: center;
     height: 100vh;
 }
+
+@media only screen
+and (max-device-width: 560px)
+and (orientation: portrait) {
+    html {
+        font-size: 75%;
+    }
+}
+
+@media only screen
+and (max-device-width: 667px)
+and (orientation: landscape) {
+    html {
+        font-size: 75%;
+    }
+}
+
+@media only screen
+and (max-device-height: 700px)
+and (orientation: landscape) {
+    html {
+        font-size: 75%;
+    }
+}
+
+@media only screen
+and (max-device-height: 640px)
+and (orientation: portrait) {
+    html {
+        font-size: 75%;
+    }
+}
+

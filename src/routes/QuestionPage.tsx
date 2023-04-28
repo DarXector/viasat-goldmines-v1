@@ -68,7 +68,7 @@ export function QuestionPage() {
         answer(id);
     }
 
-    return <InnerPage title={`${t('question')} ${1}`}>
+    return <InnerPage title={`${t('question')} ${1}`} scrollable={true}>
         <div className='question-page page'
              style={currentQuestion ? {backgroundImage: currentQuestion.map ? `url(${constants.BASE_URL}/${currentQuestion.map})` : `url(${defaultBg})`} as CSSProperties : undefined}>
             {loading ? <Spinner color={'light'}/> :
@@ -91,13 +91,12 @@ export function QuestionPage() {
                             } else {
                                 getNextQuestion(1)
                             }
-                        }}
-                                                       style={{minHeight: '80px'}}>{completed ? `${t('finish').toUpperCase()} >` : `${t('next_question').toUpperCase()} >`}</TransparentButton> :
+                        }}>{completed ? `${t('finish').toUpperCase()} >` : `${t('next_question').toUpperCase()} >`}</TransparentButton> :
                             <CountdownCircleTimer
                                 isPlaying
-                                size={100}
+                                size={70}
                                 duration={30}
-                                strokeWidth={6}
+                                strokeWidth={4}
                                 colors={['#261301', '#A51B17', '#A51B17']}
                                 trailColor={'#fff'}
                                 colorsTime={[30, 10, 0]}
@@ -106,10 +105,10 @@ export function QuestionPage() {
                                 {({remainingTime}) => <div className='d-flex justify-content-center align-items-center'
                                                            style={{
                                                                color: '#A51B17',
-                                                               fontSize: '20pt',
+                                                               fontSize: '16pt',
                                                                fontWeight: 700,
-                                                               width: '88px',
-                                                               height: '88px',
+                                                               width: '62px',
+                                                               height: '62px',
                                                                borderRadius: '99999px',
                                                                backgroundColor: '#fff'
                                                            }}>{remainingTime}</div>}

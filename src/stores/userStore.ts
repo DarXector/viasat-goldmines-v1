@@ -45,7 +45,7 @@ async function signInWithUsername(username: string, country: string) {
 }
 
 async function getPlayerInfo() {
-    const response = await fetch(constants.API_URL + 'player_info', { method: "GET", /*headers: {'Force-Identifier' : '7023e2349c22dbb9fe3ebe2624cb58f8'}*/ });
+    const response = await fetch(constants.API_URL + 'player_info', { method: "GET", /*headers: {'Force-Identifier' : '6359f6e0e34c4987fefac23aef282a9f'}*/ });
     if (response.status !== 200) {
         console.error('getPlayerInfo response', response);
         return  {error: response.statusText};

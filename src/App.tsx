@@ -15,9 +15,7 @@ import {AboutPage} from "./routes/AboutPage";
 import {HowToPage} from "./routes/HowToPage";
 import {RankingPage} from "./routes/RankingPage";
 import {useTranslation} from "react-i18next";
-import {Helmet} from "react-helmet";
 import translations from "./translations";
-import constants from "./data/constants";
 import {useUser} from "./stores/userStore";
 
 function App() {
@@ -79,7 +77,7 @@ function App() {
 
   return (
     <div className="App">
-        <Helmet>
+        {/*<Helmet>
             <title>{t('about_text_2').toString()}</title>
             <meta name="description" content={t('welcome_text').toString()}/>
             <meta property="og:title" content={t('about_text_2').toString()} />
@@ -90,7 +88,7 @@ function App() {
             <meta name="twitter:description" content={t('welcome_text').toString()}/>
             <meta name="twitter:image" content={constants.BASE_URL + t('metaImage').toString()}/>
             <meta name="twitter:card" content="summary_large_image"/>
-        </Helmet>
+        </Helmet>*/}
       <Routes>
           {/* If the user visits test.com, redirect them to the appropriate page for their language. For example test.com -> test.com/en */}
           <Route key={'index_route'} path={"/"} element={<Navigate to={`${i18n.language}`} replace />} />
