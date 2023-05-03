@@ -74,6 +74,7 @@ export type Question = {
 type QuestionStore = {
     getNextQuestion: (iterate?: number) => void
     currentQuestion: Question | unknown;
+    currentQuestionOrder: number;
     loading: boolean;
     isCorrect: boolean;
     completed: boolean;
@@ -155,6 +156,7 @@ async function answerQuestion(id: string) {
 export const useQuestion = create<QuestionStore>(
     (set, get) => ({
         currentQuestion: null,
+        currentQuestionOrder: 0,
         isCorrect: false,
         correctAnswer: '',
         wrongAnswer: '',
@@ -166,7 +168,8 @@ export const useQuestion = create<QuestionStore>(
             set({loading: true, answered: false, correctAnswer: '', wrongAnswer: ''});
             const question = await getNextQuestion();
             console.log('question', question);
-            set({currentQuestion: question, loading: false, completed: false});
+            const currentQuestionOrder = get().currentQuestionOrder + 1;
+            set({currentQuestion: question, currentQuestionOrder: currentQuestionOrder, loading: false, completed: false});
         },
         answer: async (id:string) => {
             const response = await answerQuestion(id);
@@ -174,6 +177,7 @@ export const useQuestion = create<QuestionStore>(
         },
         resetQuestions: async () => {
             const response = await resetQuestions();
+            set({currentQuestionOrder: 0});
         }
     }),
 );

@@ -29,6 +29,7 @@ export function QuestionPage() {
     const correctAnswer = useQuestion(state => state.correctAnswer);
     const wrongAnswer = useQuestion(state => state.wrongAnswer);
     const completed = useQuestion(state => state.completed);
+    const currentQuestionOrder = useQuestion(state => state.currentQuestionOrder);
 
     const currentUser = useUser(state => state.currentUser) as User;
 
@@ -68,7 +69,7 @@ export function QuestionPage() {
         answer(id);
     }
 
-    return <InnerPage title={`${t('question')} ${1}`} scrollable={true}>
+    return <InnerPage title={`${t('question')} ${currentQuestionOrder}`} scrollable={true}>
         <div className='question-page page'
              style={currentQuestion ? {backgroundImage: currentQuestion.map ? `url(${constants.BASE_URL}/${currentQuestion.map})` : `url(${defaultBg})`} as CSSProperties : undefined}>
             {loading ? <Spinner color={'light'}/> :

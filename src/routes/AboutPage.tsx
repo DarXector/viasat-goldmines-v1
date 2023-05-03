@@ -3,7 +3,7 @@ import {InnerPage} from "./InnerPage";
 import './AboutPage.css';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { faCircleInfo } from '@fortawesome/free-solid-svg-icons';
-import {schedule, scheduleRerun} from "../data/schedule";
+import {schedule, scheduleRerun, scheduleRerunRO, scheduleRO} from "../data/schedule";
 import {EpisodeInfo} from "../components/EpisodeInfo";
 import {Link, useLocation} from "react-router-dom";
 import {AppButton} from "../components/AppButton";
@@ -33,7 +33,7 @@ export function AboutPage() {
                         <p className='premiere-line-2'>{t('about_text_3')}</p>
                     </div>
                     {
-                        schedule.map((item, index) => <EpisodeInfo key={item.id} title={`${t('episode')} ${item.title}`} day={`${t(item.day)} ${item.date}`} time={item.time}/>)
+                        (i18n.language === 'ro' ? scheduleRO : schedule).map((item, index) => <EpisodeInfo key={item.id} title={`${t('episode')} ${item.title}`} day={`${t(item.day)} ${item.date}`} time={item.time}/>)
                     }
                     <br />
                     <p>
@@ -47,7 +47,7 @@ export function AboutPage() {
                         <p className='premiere-line-2'>{t('about_text_7')}</p>
                     </div>
                     {
-                        scheduleRerun.map((item, index) => <EpisodeInfo key={item.id} title={`${t('episode')} ${item.title}`} day={`${t(item.day)} ${item.date}`} time={item.time}/>)
+                        (i18n.language === 'ro' ? scheduleRerunRO : scheduleRerun).map((item, index) => <EpisodeInfo key={item.id} title={`${t('episode')} ${item.title}`} day={`${t(item.day)} ${item.date}`} time={item.time}/>)
                     }
                     <br />
                     <p>

@@ -24,7 +24,7 @@ export function RankingPage() {
 
     useEffect(() => {
         getPlayerInfo();
-        getRanking();
+        getRanking(i18n.language);
     }, []);
 
     return (
