@@ -7,8 +7,7 @@ import 'swiper/css/pagination';
 import {Pagination, Scrollbar} from "swiper";
 import {Slide} from "../components/Slide";
 
-import viasatLogoImg from '../assets/images/viasat-explore-logo.png';
-import appTitleImg from '../assets/images/title-en.png';
+import logoGlow from '../assets/images/glow.png';
 import castImg from '../assets/images/cast.png';
 import {AppButton} from "../components/AppButton";
 import {TransparentButton} from "../components/TransparentButton";
@@ -30,7 +29,10 @@ export function StartPage() {
         <Swiper pagination={true} modules={[Pagination, Scrollbar]} className="my-swiper">
             <SwiperSlide>
                 <Slide>
-                    <img className='viasat-logo' alt="Viasat History Logo" src={t('viasatLogo') as string}/>
+                    <div className='position-relative'>
+                        <img className='logo-glow' alt="Viasat History Logo Glow" src={logoGlow}/>
+                        <img className='viasat-logo' alt="Viasat History Logo" src={t('viasatLogo') as string}/>
+                    </div>
                     <p>{t('welcome')}</p>
                     <img className='app-title' alt="Auissie Gold Hunters MINE SOS" src={t('logo') as string}/>
                     <p style={{marginTop: '-20px'}}>{t('quiz').toUpperCase().split('').join(' ')}</p>
@@ -39,7 +41,10 @@ export function StartPage() {
             </SwiperSlide>
             <SwiperSlide>
                 <Slide>
-                    <img className='viasat-logo' alt="Viasat History Logo" src={t('viasatLogo') as string}/>
+                    <div className='position-relative'>
+                        <img className='logo-glow' alt="Viasat History Logo Glow" src={logoGlow}/>
+                        <img className='viasat-logo' alt="Viasat History Logo" src={t('viasatLogo') as string}/>
+                    </div>
                     <p>{t('welcome_text')}</p>
                     <br />
                     <Link to={`/${i18n.language}/quiz`}>

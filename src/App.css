@@ -141,9 +141,18 @@
     max-height: 800px;
 }
 
+.slide-content .logo-glow {
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 18vh;
+}
+
 .slide-content .viasat-logo {
+    position: absolute;
+    top: 4vh;
+    left: 13vh;
     height: 10vh;
-    margin: 30px;
 }
 
 .slide-content .app-title {
