@@ -7,7 +7,7 @@ export default {
     viasatLogo: viasatLogo,
     logo: titleLogo,
     quiz: 'Test',
-    about: 'Despre',
+    about: 'Despre emisiune',
     how_to_play: 'Cum să joci',
     ranking: 'Clasament',
     welcome_text: 'Bine ați venit la testul nostru, inspirat de serialul "Căutătorii de aur din Australia: Mineri la ananghie", de pe postul Viasat Explore.',
@@ -38,6 +38,7 @@ export default {
     how_to_play_text_2: 'Înainte de a începe testul este important să vă introduceți numele sau porecla, pentru a vă putea verifica scorul mai târziu.',
     how_to_play_text_3: 'Testul constă în întrebări de cunoștințe generale despre aur și de câteva întrebări specifice din domeniul extracției aurului. Timpul de răspuns pentru fiecare întrebare este limitat. Numărul de răspunsuri corecte și timpul petrecut pentru a răspunde vor determina scorul și vă puteți verifica locul din clasament, după ce veți termina testul.',
     how_to_play_text_4: 'Suntem convinși că veți învăța ceva nou și dacă doriți să fiți martor direct la modul în care se caută aur, vă recomandăm să urmăriți serialul „Căutătorii de aur din Australia: Mineri la ananghie”, pe Viasat Explore, în fiecare zi de luni din luna mai, de la ora 22:00. Căutați postul nostru la furnizorul dvs. de televiziune prin cablu.',
+    how_to_play_text_5: 'Completarea testului nu va fi urmată de acordarea unor premii.',
     save: 'Salvați',
     cookies_popup_text: 'Site-ul nostru web utilizează cookie-uri pentru a înțelege modul în care oamenii folosesc site-ul nostru web, pentru a ne permite să îmbunătățim site-ul web. Prin bifarea căsuței din ferestrele noastre pop-up de analiză, vă dați acordul pentru utilizarea cookie-urilor așa cum sunt definite în această Politică privind cookie-urile. Dacă nu sunteți de acord cu utilizarea modulelor cookie pentru operațiuni web, le puteți bloca sau dezactiva utilizând setările browserului dvs. și debifând căsuța de selectare disponibilă, linkurile de dezactivare stabilite în această Politică privind modulele cookie. Cu toate acestea, blocarea tuturor cookie-urilor poate avea un impact negativ asupra utilizării de către dvs. a acestui site web',
 }

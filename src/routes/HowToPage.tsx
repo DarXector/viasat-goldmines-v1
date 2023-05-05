@@ -37,6 +37,9 @@ export function HowToPage() {
                     <p>
                         {t('how_to_play_text_4')}
                     </p>
+                    <p>
+                        {t('how_to_play_text_5')}
+                    </p>
                     <br />
                     <Link to={`/${i18n.language}/quiz`}>
                         <AppButton inverted={true}>{t('take_a_quiz').toUpperCase()}</AppButton>

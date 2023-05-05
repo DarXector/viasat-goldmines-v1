@@ -6,7 +6,7 @@ export default {
     metaImage: metaImage,
     viasatLogo: viasatLogo,
     logo: titleLogo,
-    quiz: 'Quiz',
+    quiz: 'O programie',
     about: 'Informacje',
     how_to_play: 'Instrukcja',
     ranking: 'Ranking',
@@ -38,6 +38,7 @@ export default {
     how_to_play_text_2: 'Przed rozpoczęciem quizu prosimy podać swoje imię lub pseudonim, żeby móc później sprawdzić swój wynik.',
     how_to_play_text_3: 'Quiz składa się z ogólnych pytań dotyczących złota oraz kilku pytań dotyczących lokalnego wydobywania złota. Twój czas odpowiedzi na każde pytanie jest ograniczony. Liczba poprawnych odpowiedzi i czas poświęcony na ich udzielenie są sumowane - po zakończeniu quizu możesz sprawdzić swoją pozycję w tabeli wyników.',
     how_to_play_text_4: 'Wierzymy, że dowiesz się tu czegoś nowego, a jeśli chcesz na własne oczy zobaczyć, jak profesjonalnie "polować" na złoto, oglądaj program "Australijscy poszukiwacze złota: na ratunek kopalniom" na Polsat Viasat Explore w każdy poniedziałek w maju o 21:00. Poszukaj naszego kanału u swojego dostawcy telewizji kablowej.',
+    how_to_play_text_5: 'Za rozwiązanie quizu nie są przewidziane nagrody.',
     save: 'Zapisz',
     cookies_popup_text: 'Nasza strona internetowa wykorzystuje pliki cookie, aby zrozumieć, w jaki sposób użytkownicy korzystają z naszej witryny, abyśmy mogli ją ulepszać. Zaznaczając odpowiednie pole w naszych wyskakujących oknach Analytics, wyrażasz zgodę na używanie przez nas plików cookie zgodnie z niniejszą Polityką plików cookie. Jeśli nie wyrażasz zgody na korzystanie z plików cookie w operacjach sieciowych, możesz je zablokować lub wyłączyć za pomocą ustawień przeglądarki, odznaczając dostępne pole wyboru, określone w niniejszej Polityce plików cookie. Jednak zablokowanie wszystkich plików cookie może mieć negatywny wpływ na korzystanie z tej witryny.',
 }

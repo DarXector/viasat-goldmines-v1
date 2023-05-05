@@ -6,8 +6,8 @@ export default {
     metaImage: metaImage,
     viasatLogo: viasatLogo,
     logo: titleLogo,
-    quiz: 'Kviz',
-    about: 'O kvizu',
+    quiz: 'O kvizu',
+    about: 'O emisiji',
     how_to_play: 'Kako igrati',
     ranking: 'Rang ljestvica',
     welcome_text: 'Dobrodošli u naš kviz, inspiriran emisijom "Australski lovci na zlato: SOS za rudnik" koja se prikazuje na programu Viasat Explore.',
@@ -38,6 +38,7 @@ export default {
     how_to_play_text_2: 'Prije započinjanja s kvizom, važno je da upišete svoje ime ili nadimak, kako biste kasnije mogli provjeriti svoj rezultat.',
     how_to_play_text_3: 'Kviz se sastoji od općih pitanja o zlatu i pitanja o lokalnim nalazištima zlata. Vrijeme odgovaranja na svako pitanje je ograničeno. Broj točnih odgovora i vrijeme utrošeno na odgovaranje se zbrajaju, a svoju poziciju možete provjeriti na rang ljestvici nakon završetka kviza.',
     how_to_play_text_4: 'Vjerujemo da ćete naučiti nešto novo igrajući se s nama, a ako želite iz prve ruke svjedočiti potrazi za blagom, gledajte emisiju „Australski lovci na zlato: SOS za rudnik”, svakog ponedjeljka u svibnju. Naš program potražite kod vašeg operatora.',
+    how_to_play_text_5: 'Kviz nije nagradnog karaktera.',
     save: 'Spremi odabir',
     cookies_popup_text: 'Ova stranica koristi kolačiće kako bismo što bolje razumjeli korištenje stranice i kako bismo ju poboljšali. Označavanjem kvadratića u prozoru za analitiku pristajete na korištenje kolačića u skladu s ovom politikom upotrebe kolačića. Ako ne pristajete na korištenje kolačića, možete ih blokirati ili isključiti u postavkama vašeg preglednika, poništavanjem potvrdnog okvira, birajući da ne koristite veze definirane ovom politikom upotrebe kolačića. Međutim, onemogućivanje svih kolačića može dovesti do toga da usluge koje se pružaju na ovoj stranici ne funkcioniraju dobro.',
 }

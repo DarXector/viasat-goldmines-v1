@@ -7,8 +7,8 @@ export default {
     viasatLogo: viasatLogo,
     logo: titleLogo,
     quiz: 'Kviz',
-    about: 'O kvizu',
-    how_to_play: 'Način igranja',
+    about: 'O emisiji',
+    how_to_play: 'O kvizu',
     ranking: 'Rang lista',
     welcome_text: 'Dobrodošli u naš kviz koji je inspirisan emisijom "Australijski Lovci Na Zlato: Pomoć Rudnicima" koja se emituje na kanalu Viasat Explore.',
     welcome: 'Dobrodošli u',
@@ -38,6 +38,7 @@ export default {
     how_to_play_text_2: 'Pre nego se kviz pokrene, važno je upisati svoje ime ili nadimak, kako bi se rezultati prikazali na rang listi.',
     how_to_play_text_3: 'Tokom kviza dobijaš opšta pitanja vezana za zlato i lokalizovana pitanja o nalazištima. Svako pitanje ima ograničeno vreme za odgovor. Broj tačnih odgovora i potrošeno vreme tokom kviza se sabiraju, a svoju poziciju možeš pronaći na rang listi nakon kviza.',
     how_to_play_text_4: 'Verujemo da ćeš naučiti nešto novo igrajući se sa nama, a ukoliko želiš da vidiš kako izgleda tražiti zlato iz prve ruke, predlažemo ti da pogledaš emisiju Australijski lovci na zlato: pomoć rudnicima. Emituje se na TV kanalu Viasat Explore, svakog ponedeljka tokom maja, u 21.00. Potraži nas kod svog kablovskog operatera.',
+    how_to_play_text_5: 'Kviz nije nagradnog karaktera.',
     save: 'Sačuvaj',
     cookies_popup_text: 'Naš sajt koristi kolačiće kako bi što bolje razumeli korišćenje sajta i unapredili ga.Čekiranjem kvadrata na prozoru analitika, pristajete na korišćenje kolačića u skladu sa ovom politikom upotrebe kolačića. Ako ne želite da prihvatite upotrebu kolačića, možete ih blokirati ili isključiti u podešavanjima na vašem pretraživaču i odabrati da ne koristite veze definisane ovom politikom upotrebe kolačića. Međutim, ukoliko se onemoguće kolačići može doći do toga da usluge koje se pružaju na sajtu neće tako dobro funkcionisati.',
 }
