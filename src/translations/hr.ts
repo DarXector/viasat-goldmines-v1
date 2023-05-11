@@ -29,7 +29,7 @@ export default {
     about_text_2: 'Australski lovci na zlato: SOS za rudnik',
     about_text_3: 'PREMIJERA PRVE SEZONE',
     about_text_4: 'Hrvajući se s mehaničkim problemima i neviđenim zlatnim sušama, nedostaje im znanja o rudarenju kako bi izbjegli katastrofu.',
-    about_text_5: 'No zato su tu iskusni australski lovac na zlato Paul Mackie i njegov tim za rudnike, kako bi kopačima zlata pomogli da svoje muke pretvore u zaradu. Paulu, oboružanom karakterističnim izravnim savjetima i rješenjima s otpada, pridružuju se vrsni geolog Aaron Raddock i njegova "šefica rudnika" – stručnjakinja za logistiku Melanie Wood. Tim zajedno obilazi najsurovije predjele Australije kako bi pomogao da šest posrnulih operacija iskapanja zlata opet postane uspješno. Uz samo šest dana za mehaničke popravke, lociranje novih nalazišta zlata, poboljšanje vještina i obnovu objekata logora, ekipa je na misiji preobrazbe rudnika zlata, ali i rudara, kopajući duboko kako bi pomogli onima kojima je pomoć potrebna.',
+    about_text_5: 'No zato su tu iskusni australski lovac na zlato Paul Mackie i njegov tim za rudnike, kako bi kopačima zlata pomogli da svoje muke pretvore u zaradu. Paulu, oboružanom karakterističnim izravnim savjetima i rješenjima s otpada, pridružuju se vrsni geolog Aaron Raddock i njegova „šefica rudnika” – stručnjakinja za logistiku Melanie Wood.',
     about_text_6: 'Australski lovci na zlato: SOS za rudnik',
     about_text_7: 'REPRIZA PRVE SEZONE',
     about_text_8: 'Tim zajedno obilazi najsurovije predjele Australije kako bi pomogao da šest posrnulih operacija iskapanja zlata opet postane uspješno.',

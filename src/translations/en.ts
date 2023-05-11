@@ -29,7 +29,7 @@ export default {
     about_text_2: 'Aussie Gold Hunters - Mine SOS',
     about_text_3: 'SEASON 1 PREMIERE',
     about_text_4: 'Battling mechanical miseries and epic gold droughts, they\'re missing the mining know-how to rescue their fortunes from disaster.',
-    about_text_5: 'However, veteran Aussie Gold Hunter Paul Mackie and his mine makeover team are here to help turn prospectors\' pain back into profit; armed with his signature straight-shooting advice and scrapyard solutions, Paul is joined by master bush geologist Aaron Raddock and his \'pit boss\' - logistics expert Melanie Wood. The team travel together to Australia\'s toughest wild frontiers to help restore six struggling gold mining operations to success; with just six days to make mechanical fixes, locate new gold deposits, upgrade skills and overhaul broken-down camp facilities, the crew are on a mission to transform gold mines - and miners - as they dig deep to help those in need.',
+    about_text_5: 'However, veteran Aussie Gold Hunter Paul Mackie and his mine makeover team are here to help turn prospectors\' pain back into profit; armed with his signature straight-shooting advice and scrapyard solutions, Paul is joined by master bush geologist Aaron Raddock and his \'pit boss\' - logistics expert Melanie Wood.',
     about_text_6: 'Aussie Gold Hunters - Mine SOS',
     about_text_7: 'SEASON 1 RERUN',
     about_text_8: 'The team travel together to Australia\'s toughest wild frontiers to help restore six struggling gold mining operations to success.',
