@@ -1,5 +1,4 @@
 import {create} from "zustand";
-import {persist} from "zustand/middleware";
 import constants from "../data/constants";
 
 export type User = {
@@ -58,42 +57,37 @@ async function getPlayerInfo() {
     return parsedResult.player;
 }
 
-export const useUser = create(
-    persist<UserStore>(
-        (set, get) => ({
-            currentUser: null,
-            getSessionToken: () => getIdToken(),
-            pending: false,
-            error: null,
-            login: async (username, country) => {
-                set({pending: true, error: null});
-                const user = await signInWithUsername(username, country);
-                if (user) {
-                    if (user.error) {
-                        set({error: user.error, pending: false});
-                    } else {
-                        set({currentUser: user, pending: false});
-                    }
+export const useUser = create<UserStore>(
+    (set, get) => ({
+        currentUser: null,
+        getSessionToken: () => getIdToken(),
+        pending: false,
+        error: null,
+        login: async (username, country) => {
+            set({pending: true, error: null});
+            const user = await signInWithUsername(username, country);
+            if (user) {
+                if (user.error) {
+                    set({error: user.error, pending: false});
                 } else {
-                    set({pending: false});
+                    set({currentUser: user, pending: false});
                 }
-            },
-            getPlayerInfo: async () => {
-                set({pending: true, error: null});
-                const user = await getPlayerInfo();
-                if (user) {
-                    if (user.error) {
-                        set({error: user.error, pending: false});
-                    } else {
-                        set({currentUser: user, pending: false});
-                    }
-                } else {
-                    set({pending: false});
-                }
+            } else {
+                set({pending: false});
             }
-        }),
-        {
-            name: 'viasat-goldmines-storage',
+        },
+        getPlayerInfo: async () => {
+            set({pending: true, error: null});
+            const user = await getPlayerInfo();
+            if (user) {
+                if (user.error) {
+                    set({error: user.error, pending: false});
+                } else {
+                    set({currentUser: user, pending: false});
+                }
+            } else {
+                set({pending: false});
+            }
         }
-    )
+    }),
 );

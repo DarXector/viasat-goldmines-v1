@@ -4,7 +4,7 @@ import {Swiper, SwiperSlide} from 'swiper/react';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
-import {Pagination, Scrollbar, Autoplay} from "swiper";
+import {Pagination, Autoplay} from "swiper";
 import {Slide} from "../components/Slide";
 
 import logoGlow from '../assets/images/glow.png';
